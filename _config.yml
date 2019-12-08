@@ -28,7 +28,7 @@ github_username: marshallsa
 show_excerpts: true
 excerpt_separator: "<!-- /excerpt -->"
 
-permalink: /:year/:month/:day/:title:output_ext
+permalink: /blog/:categories/:title:output_ext
 
 timezone: America/Los_Angeles
 
