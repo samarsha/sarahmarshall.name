@@ -30,6 +30,8 @@ excerpt_separator: "<!-- /excerpt -->"
 
 permalink: /:year/:month/:day/:title:output_ext
 
+timezone: America/Los_Angeles
+
 # Build settings
 theme: minima
 plugins:
