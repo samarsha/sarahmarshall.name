@@ -5,8 +5,6 @@
 layout: home
 ---
 
-## About
-
 Hello! I'm Sarah Marshall, a senior studying computer science at the University
 of Washington. My interests include software engineering, design and
 implementation of programming languages, automated software verification and
