@@ -38,8 +38,8 @@ limited to console graphics.
 
 Let's take this idea---printing a snapshot of the quantum state at specific
 points---and run with it. We can call `DumpMachine` continuously, after every
-step, and animate the transitions between states. We can remember all of the
-previous states and show them in a timeline so you can jump back and forth,
+step, and animate the transitions between states. We can also remember all of
+the previous states and show them in a timeline so you can jump back and forth,
 making it easy to compare the quantum state at any two points in time.
 
 ![Animated demo of the state visualizer]({% link /assets/state-visualizer/demo.gif %})
