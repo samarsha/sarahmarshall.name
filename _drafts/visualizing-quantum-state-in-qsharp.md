@@ -3,6 +3,14 @@ layout: post
 title: Visualizing Quantum State in Q#
 ---
 
+A great thing you can do with quantum simulators that you can't do with a real
+quantum computer is peek inside at the quantum state. Why would you want to do
+this? Well, often in the course of developing a quantum program, something goes
+wrong, and it's helpful to inspect the quantum state to try to find where the
+problem is, much like you would add print statements to debug a classical
+program. Or perhaps nothing is wrong, but you want to trace the execution of a
+quantum algorithm for demonstration purposes.
+
 When you want to look at the quantum state of a Q# program, the easiest way is
 to use [`DumpMachine`] or [`DumpRegister`]. These functions show you a little
 table like this on the console:
