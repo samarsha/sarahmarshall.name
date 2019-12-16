@@ -20,7 +20,8 @@
 
 title: Sarah Marshall
 email: marshallsaraha@gmail.com
-description: Senior studying computer science at the University of Washington
+description:
+  I'm a senior studying computer science at the University of Washington.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: marshallsa
