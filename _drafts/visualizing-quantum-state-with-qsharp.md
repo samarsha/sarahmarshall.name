@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Visualizing Quantum State in Q#
+title: Visualizing Quantum State with Q#
 ---
 
 A great thing you can do with quantum simulators that you can't do with a real
