@@ -26,17 +26,18 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: marshallsa
 
+timezone: America/Los_Angeles
+permalink: /blog/:categories/:title:output_ext
 show_excerpts: true
 excerpt_separator: "<!-- /excerpt -->"
-
-permalink: /blog/:categories/:title:output_ext
-
-timezone: America/Los_Angeles
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+minima:
+  date_format: "%B %-d, %Y"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
