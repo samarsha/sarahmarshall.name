@@ -98,14 +98,13 @@ shows Q# [*operations*, not functions][operations and functions].
 ### 3. Quantum state
 
 The largest part of the screen is taken up by the quantum state itself. It's a
-bar chart that shows the amplitude of each basis vector in increasing order from
-left to right---the basis vector labels are on the bottom. (Unlike
-`DumpMachine`, which has bars that show *probability* instead of probability
-amplitude, these bars can be negative, so the vertical axis ranges from -1 to
-+1.) The real parts of the amplitude are shown in red, and the imaginary parts
-in blue. (The examples here happen to only have real amplitudes, so there are
-only red bars.) You can also mouse over a bar to see the its precise decimal
-value instead of relying on the tick marks.
+bar chart that shows the amplitude of each basis vector, with the basis vector
+labels shown at the bottom. The real parts of the amplitude are red and the
+imaginary parts are blue. (The examples here happen to only have real
+amplitudes, so there are only red bars. Also, unlike `DumpMachine`, which has
+bars that show *probability* instead of probability amplitude, these bars can be
+negative, so the vertical axis ranges from -1 to +1.) You can mouse over a bar
+to see the its precise decimal value instead of relying on the tick marks.
 
 ## Behind the scenes
 
