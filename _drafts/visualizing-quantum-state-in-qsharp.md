@@ -39,7 +39,7 @@ making it easy to compare the quantum state at any two points in time.
 This is what the [Q# State Visualizer], one of the samples in the in the
 [Microsoft Quantum Development Kit samples][QDK samples] repository, does. I
 worked on it over the summer as part of my internship at Microsoft. This post
-doubles as a quick guide to how to use the state visualizer and an explanation
+doubles as a quick guide on how to use the state visualizer and an explanation
 of how it works.
 
 ## Setting up the visualizer
@@ -137,7 +137,8 @@ collapse operations with children in the timeline. There could also be more
 options for how the quantum state is displayed, like showing probabilities
 instead of probability amplitudes, or even other kinds of visualizations besides
 a bar chart. The current visualization also uses color to distinguish between
-the real and imaginary parts, which may be an issue for colorblind users.
+the real and imaginary parts, which may be an issue for users with color
+blindness.
 
 It would also be cool to add more debugger-like features to the visualizer (like
 the ones I mentioned in the previous section that aren't possible with the
