@@ -39,6 +39,9 @@ plugins:
 minima:
   date_format: "%B %-d, %Y"
 
+disqus:
+  shortname: sarah-marshall
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
