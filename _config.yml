@@ -29,18 +29,17 @@ github_username: marshallsa
 timezone: America/Los_Angeles
 permalink: /blog/:categories/:title:output_ext
 show_excerpts: true
-excerpt_separator: "<!-- /excerpt -->"
-
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
 
 minima:
   date_format: "%B %-d, %Y"
 
 disqus:
   shortname: sarah-marshall
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
 
 # Exclude from processing.
 # The following items will not be processed, by default.
