@@ -94,7 +94,7 @@ are currently running, or are about to start. The lists are nested so operations
 that are called by another operation are shown as indented below the parent
 operation. The blue arrow points to the operation that's going to run next. When
 an operation returns something other than unit, the return value is shown after
-an equals sign.[^1]
+an equals sign.
 
 A neat feature of the timeline is that you can click on any operation in it to
 jump directly to the quantum state at that point in the program. This makes it
@@ -161,9 +161,6 @@ requests for the state visualizer if you've made any improvements!
 This post is part of the [2019 Q# Advent Calendar].
 
 
-[^1]: There's a bug right now that means operation return values aren't showing
-    up correctly, but I [opened a PR][bug fixes PR] to fix them.
-
 [`DumpMachine`]: https://docs.microsoft.com/en-us/qsharp/api/qsharp/microsoft.quantum.diagnostics.dumpmachine?view=qsharp-preview
 [`DumpRegister`]: https://docs.microsoft.com/en-us/qsharp/api/qsharp/microsoft.quantum.diagnostics.dumpregister?view=qsharp-preview
 [Q# State Visualizer]: https://github.com/microsoft/Quantum/tree/master/samples/runtime/state-visualizer
@@ -175,4 +172,3 @@ This post is part of the [2019 Q# Advent Calendar].
 [`SimulatorBase`]: https://github.com/microsoft/qsharp-runtime/blob/master/src/Simulation/Common/SimulatorBase.cs
 [`StateDumper`]: https://github.com/microsoft/qsharp-runtime/blob/master/src/Simulation/Simulators/QuantumSimulator/StateDumper.cs
 [2019 Q# Advent Calendar]: https://devblogs.microsoft.com/qsharp/q-advent-calendar-2019/
-[bug fixes PR]: https://github.com/microsoft/Quantum/pull/280
