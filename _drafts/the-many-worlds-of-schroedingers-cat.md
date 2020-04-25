@@ -19,15 +19,23 @@ But let's consider a more modest question.
 ## Enter *Superposition*
 
 [*Superposition*][superposition] is a video game that I'm making with my friend [Rory Soiffer][rsoiffer].
-The premise is: You are Schrödinger's cat, and many worlds are real.
+The premise is: You are Schrödinger's cat, and you really can be in a superposition of alive and dead.
 
-It's a puzzle game, but we wanted to make something less abstract than a pure quantum puzzle game like [*Hello Quantum*][hello-quantum].
-So we added an avatar for the player, used a top-down view, and made time continuous rather than discrete.
-*Superposition* is superficially similar to traditional 2D action-adventure games.
+It's a puzzle game, but we wanted to make it approachable and more like a 2D action-adventure game than a pure abstract puzzle game would be.
+The player directly controls Schrödinger's cat, and in real time instead of with discrete turns.
 But under the hood, a quantum system is being simulated.
-Like the thought experiment, Schrödinger's cat gives us a bridge between the microscopic and the macroscopic, between the weird quantum world and the familiar classical world.
+Like the thought experiment, Schrödinger's cat gives us a bridge between the microscopic and the macroscopic---between the weird quantum world and the familiar classical world.
 
-The question is: How do we design a video game that's fun to play while being mathematically rigorous and consistent with quantum mechanics?
+An important point of clarification: I'm using the many-worlds interpretation as a metaphor for the game's mechanics, since Rory and I decided to call our representation of superposition states in the game "universes" that are part of a "multiverse."
+But they are not the same thing as MWI.
+Universes in the game can be "recombined" even if different events happened in their history, unlike MWI.
+Also, *Superposition* doesn't allow measurement, and the rest of the game doesn't assume any particular interpretation of quantum mechanics, either.
+
+The good news is that *Superposition* does actually model a mathematically accurate quantum system.
+Actually, the "universes" are just a fancy name for basis states, and the "multiverse" is just the complete state of the system.
+When universes recombine, it is due to the interference of basis states, just like real quantum mechanics.
+
+So with that said, the question is: How do we design a video game that's fun to play while being mathematically rigorous and consistent with quantum mechanics?
 
 Let's define our [Hilbert space][hilbert-space].
 
@@ -86,7 +94,7 @@ In return, the gate gives you a one or more universes back.
 This is an abstract definition that will make more sense with examples, but first we need to get a one more definition out of the way.
 
 A *universe* is a tuple of a probability amplitude and a state, where the state is a mapping from a qudit to an arbitrary classical value.
-This is another way of saying that universes are basis states.
+This is another way of saying that universes are basis states, and in any particular universe the state of all qudits is purely classical.
 In traditional quantum computing, we can describe the state of a two-qubit system as *|psi> = a|00> + b|01> + c|10> + d|11>*.
 Here, we say that we have four universes:
 
@@ -94,10 +102,6 @@ Here, we say that we have four universes:
 2. *(a, {q1 -> 0, q0 -> 1})*
 3. *(b, {q1 -> 1, q0 -> 0})*
 4. *(c, {q1 -> 1, q0 -> 1})*
-
-This is where the many worlds come in, but there is an important difference.
-In the many worlds interpretation, the universe only diverges when a measurement is performed.
-Here, the universe diverges as soon as a superposition is created.
 
 **TODO**
 
@@ -108,7 +112,6 @@ Here, the universe diverges as soon as a superposition is created.
 
 [cat]: https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat
 [copenhagen]: https://en.wikipedia.org/wiki/Copenhagen_interpretation
-[hello-quantum]: https://helloquantum.mybluemix.net/
 [hilbert-space]: https://en.wikipedia.org/wiki/Hilbert_space
 [mwi]: https://en.wikipedia.org/wiki/Many-worlds_interpretation
 [qudit]: https://en.wikipedia.org/wiki/Qubit#Variations_of_the_qubit
