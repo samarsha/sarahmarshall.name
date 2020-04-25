@@ -89,7 +89,7 @@ trait Gate[A] {
 It is the gate that does the reverse of the original gate when given the same argument.
 
 `apply` takes an arbitrary argument to give to the gate, and a universe in which to apply the gate.
-In return, the gate gives you a one or more universes back.
+In return, the gate gives you one or more universes back.
 
 Remember, when you see "universe," just think of a term in an equation representing a quantum state: a probability amplitude multipled by a basis state.
 In traditional quantum mechanics, we can describe the state of a two-qubit system as *|psi> = a|00> + b|01> + c|10> + d|11>*.
@@ -104,7 +104,7 @@ Then `apply` just maps a term to one or more terms.
 For example:
 
 * *X* maps a\|0> to a\|1> and a\|1> to a\|0>.
-* *H* maps a\|0> (a/sqrt(2) \|0>, a/sqrt(2) \|1>), and a\|1> to (a/sqrt(2) \|0>, -a/sqrt(2) \|1>).
+* *H* maps a\|0> to (a/sqrt(2) \|0>, a/sqrt(2) \|1>), and a\|1> to (a/sqrt(2) \|0>, -a/sqrt(2) \|1>).
 
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
 To do this we need to associate more information with each term than just its probability amplitude and basis state.
@@ -117,9 +117,14 @@ How does the player pick up a quball?
 By applying the *X* gate to qubit representing the quball's carried state.
 How does the player move?
 By applying the *Translate* gate to the qudit representing their position.
-All gates must be unitary, which ensures that any changes to the game state are sound.
 
-### Transforming gates
+### Unitarity
+
+All gates must be unitary, which ensures that any change to the game state is sound.
+
+**TODO**
+
+### Transformations
 
 Gates are functions, so they can be transformed like functions.
 An example is `contramap` which transforms the type of the input value to a gate.
@@ -131,7 +136,7 @@ def contramap[A, B](f: B => A)(gate: Gate[A]): Gate[B]
 
 This is called `contramap` instead of `map` because the order of the types is reversed.
 The new `Gate[B]` applies the mapping function on its input of type `B` to transform it into type `A`, and only then can it call `Gate[A]`.
-If you're into category theory, gates are actually [contravariant functors][contravariant].
+If you're into Haskell, gates are actually [contravariant functors][contravariant].
 
 Another example is `multi`, which takes a gate that operates on a single value of type `A` and creates a gate that operates a sequence of those values and accumulates the universes:
 
@@ -166,8 +171,6 @@ This difference in types is a complete description of the difference in the beha
 
 This is perhaps most useful when composed with `multi`.
 If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Seq()` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
-
-**TODO**
 
 ## Puzzles
 
