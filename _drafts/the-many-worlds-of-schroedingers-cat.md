@@ -32,7 +32,7 @@ Universes in the game can be "recombined" even if different events happened in t
 Also, *Superposition* doesn't allow measurement, and the rest of the game doesn't assume any particular interpretation of quantum mechanics, either.
 
 The good news is that *Superposition* does actually model a mathematically accurate quantum system.
-Actually, the "universes" are just a fancy name for basis states, and the "multiverse" is just the complete state of the system.
+Actually, the "universes" are just a fancy name for basis states and their corresponding probability amplitudes, and the "multiverse" is just the complete state of the system.
 When universes recombine, it is due to the interference of basis states, just like real quantum mechanics.
 
 So with that said, the question is: How do we design a video game that's fun to play while being mathematically rigorous and consistent with quantum mechanics?
@@ -44,7 +44,7 @@ Let's define our [Hilbert space][hilbert-space].
 The Hilbert space, which is really just the space of possible states that our game can be in, is the product of the states that each entity in the game can be in.
 As of the time of writing, we just have two entities that have quantum state: Schrödinger's cat, controlled by the player and who we will affectionately call *Erwin*; and *quballs*, which are ball-shaped qubits that can be picked up and moved around the level.
 
-By "quantum state," I mean that the state is a linear combination of basis states in **C**^*n*, where the coefficient on each basis state is the *probability amplitude*, and the squared magnitudes of the probability amplitudes must sum to one.
+By "quantum state," I mean that the state is a linear combination of basis states in **C**^*n*, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
 Each level contains a discrete grid, and each entity can be in one or more of these cells.
 That is, each cell is a basis state, and an entity is in a linear combination of them.
 This is in contrast with other state in the game that is not quantum, which we call *metadata*.
@@ -86,22 +86,39 @@ trait Gate[A] {
 ```
 
 `adjoint` is familiar if you know some quantum computing.
-It is just the a gate that does the reverse of the original gate when given the same argument.
+It is the gate that does the reverse of the original gate when given the same argument.
 
-`apply` is different from the traditional way of describing quantum gates.
-It takes an arbitrary argument to give to the gate, and a universe in which to apply the gate.
+`apply` takes an arbitrary argument to give to the gate, and a universe in which to apply the gate.
 In return, the gate gives you a one or more universes back.
-This is an abstract definition that will make more sense with examples, but first we need to get a one more definition out of the way.
 
-A *universe* is a tuple of a probability amplitude and a state, where the state is a mapping from a qudit to an arbitrary classical value.
-This is another way of saying that universes are basis states, and in any particular universe the state of all qudits is purely classical.
-In traditional quantum computing, we can describe the state of a two-qubit system as *|psi> = a|00> + b|01> + c|10> + d|11>*.
+Remember, when you see "universe," just think of a term in an equation representing a quantum state: a probability amplitude multipled by a basis state.
+In traditional quantum mechanics, we can describe the state of a two-qubit system as *|psi> = a|00> + b|01> + c|10> + d|11>*.
 Here, we say that we have four universes:
 
 1. *(d, {q1 -> 0, q0 -> 0})*
 2. *(a, {q1 -> 0, q0 -> 1})*
 3. *(b, {q1 -> 1, q0 -> 0})*
 4. *(c, {q1 -> 1, q0 -> 1})*
+
+Then `apply` just maps a term to one or more terms.
+For example:
+
+* *X* maps a\|0> to a\|1> and a\|1> to a\|0>.
+* *H* maps a\|0> (a/sqrt(2) \|0>, a/sqrt(2) \|1>), and a\|1> to (a/sqrt(2) \|0>, -a/sqrt(2) \|1>).
+
+We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
+To do this we need to associate more information with each term than just its probability amplitude and basis state.
+
+The meaning of the first parameter `value` depends on the specific gate used. Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
+
+Gates are the only way to change the state of the quantum system in *Superposition*.
+How does the player pick up a quball?
+By applying the *X* gate to qubit representing the quball's carried state.
+How does the player move?
+By applying the *Translate* gate to the qudit representing their position.
+All gates must be unitary, which ensures that any changes to the game state are sound.
+
+### Transforming gates
 
 **TODO**
 
