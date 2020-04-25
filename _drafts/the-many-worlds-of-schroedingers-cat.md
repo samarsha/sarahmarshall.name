@@ -76,14 +76,14 @@ There are more basis states for position, so there are more possibilites for sup
 ## Gates
 
 We need quantum gates to evolve the state of the system over time.
-We define a *gate* as a tuple of two functions:
+We define a *gate* as two functions:
 
-```
+{% highlight scala %}
 trait Gate[A] {
   def apply(value: A)(universe: Universe): NonEmptyList[Universe]
   def adjoint: Gate[A]
 }
-```
+{% endhighlight %}
 
 `adjoint` is familiar if you know some quantum computing.
 It is the gate that does the reverse of the original gate when given the same argument.
@@ -109,7 +109,8 @@ For example:
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
 To do this we need to associate more information with each term than just its probability amplitude and basis state.
 
-The meaning of the first parameter `value` depends on the specific gate used. Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
+The meaning of the first parameter `value` depends on the specific gate used.
+Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
 
 Gates are the only way to change the state of the quantum system in *Superposition*.
 How does the player pick up a quball?
@@ -120,6 +121,35 @@ All gates must be unitary, which ensures that any changes to the game state are 
 
 ### Transforming gates
 
+Gates are functions, so they can be transformed like functions.
+An example is `contramap` which transforms the type of the input value to a gate.
+Its signature is:
+
+{% highlight scala %}
+def contramap[A, B](f: B => A)(gate: Gate[A]): Gate[B]
+{% endhighlight %}
+
+This is called `contramap` instead of `map` because the order of the types is reversed.
+The new `Gate[B]` applies the mapping function on its input of type `B` to transform it into type `A`, and only then can it call `Gate[A]`.
+If you're into category theory, gates are actually [contravariant functors][contravariant].
+
+Another example is `multi`, which takes a gate that operates on a single value of type `A` and creates a gate that operates a sequence of those values and accumulates the universes:
+
+{% highlight scala %}
+def multi(gate: Gate[A]): Gate[Seq[A]] = new Gate[Seq[A]] {
+  override def apply(values: Seq[A])(universe: Universe) = values match {
+    case Seq() => NonEmptyList(universe)
+    case x :: xs => gate(x)(universe) flatMap gate.multi(xs)
+  }
+
+  override def adjoint = gate.adjoint.multi contramap (_.reverse)
+}
+{% endhighlight %}
+
+Basically: if the sequence is empty, return the original universe unchanged.
+Otherwise, apply the first value to the gate in the initial universe, and then repeat for the remaining values using the universes produced by the first application.
+This is analogous to the [`ApplyToEach`][applytoeach] operation in Q#.
+
 **TODO**
 
 ## Puzzles
@@ -127,7 +157,9 @@ All gates must be unitary, which ensures that any changes to the game state are 
 **TODO**
 
 
+[applytoeach]: https://docs.microsoft.com/en-us/qsharp/api/qsharp/microsoft.quantum.canon.applytoeach
 [cat]: https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat
+[contravariant]: https://hackage.haskell.org/package/contravariant-1.4/docs/Data-Functor-Contravariant.html
 [copenhagen]: https://en.wikipedia.org/wiki/Copenhagen_interpretation
 [hilbert-space]: https://en.wikipedia.org/wiki/Hilbert_space
 [mwi]: https://en.wikipedia.org/wiki/Many-worlds_interpretation
