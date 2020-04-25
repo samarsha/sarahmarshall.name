@@ -123,7 +123,7 @@ All gates must be unitary, which ensures that any changes to the game state are 
 
 Gates are functions, so they can be transformed like functions.
 An example is `contramap` which transforms the type of the input value to a gate.
-Its signature is:
+Its type is:
 
 {% highlight scala %}
 def contramap[A, B](f: B => A)(gate: Gate[A]): Gate[B]
@@ -136,7 +136,7 @@ If you're into category theory, gates are actually [contravariant functors][cont
 Another example is `multi`, which takes a gate that operates on a single value of type `A` and creates a gate that operates a sequence of those values and accumulates the universes:
 
 {% highlight scala %}
-def multi(gate: Gate[A]): Gate[Seq[A]] = new Gate[Seq[A]] {
+def multi(gate: Gate[A]) = new Gate[Seq[A]] {
   override def apply(values: Seq[A])(universe: Universe) = values match {
     case Seq() => NonEmptyList(universe)
     case x :: xs => gate(x)(universe) flatMap gate.multi(xs)
@@ -149,6 +149,23 @@ def multi(gate: Gate[A]): Gate[Seq[A]] = new Gate[Seq[A]] {
 Basically: if the sequence is empty, return the original universe unchanged.
 Otherwise, apply the first value to the gate in the initial universe, and then repeat for the remaining values using the universes produced by the first application.
 This is analogous to the [`ApplyToEach`][applytoeach] operation in Q#.
+
+A more complicated transformation is `controlled`, whose name is somewhat misleading if you're used to the traditional meaning of a controlled operation:
+
+{% highlight scala %}
+def controlled[B](f: B => Universe => A)(gate: Gate[A]) = new Gate[B] {
+  override def apply(value: B)(universe: Universe) =
+    gate(f(value)(universe))(universe)
+
+  override def adjoint = gate.adjoint controlled f
+}
+{% endhighlight %}
+
+Looking at the type, `controlled: (B => Universe => A) => Gate[A] => Gate[B]`, you can see that it is identical to `contramap: (B => A) => Gate[A] => Gate[B]` except the mapping function also takes a universe.
+This difference in types is a complete description of the difference in the behavior of `controlled` and `contramap`: the only difference is that with `controlled`, you can change the value applied to the gate based on the state of each universe.
+
+This is perhaps most useful when composed with `multi`.
+If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Seq()` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
 
 **TODO**
 
