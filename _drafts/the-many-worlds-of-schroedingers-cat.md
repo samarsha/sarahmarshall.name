@@ -137,7 +137,7 @@ Another example is `multi`, which takes a gate that operates on a single value o
 {% highlight scala %}
 def multi(gate: Gate[A]) = new Gate[Seq[A]] {
   override def apply(values: Seq[A])(universe: Universe) = values match {
-    case Seq() => NonEmptyList(universe)
+    case Nil => NonEmptyList(universe)
     case x :: xs => gate(x)(universe) flatMap gate.multi(xs)
   }
 
@@ -152,7 +152,7 @@ This is analogous to the [`ApplyToEach`][applytoeach] operation in Q#.
 A more complicated transformation is something we call `controlled`, whose name is somewhat misleading if you're used to the traditional meaning of a controlled operation:
 
 {% highlight scala %}
-def controlled[B](f: B => Universe => A)(gate: Gate[A]) = new Gate[B] {
+def controlled[A, B](f: B => Universe => A)(gate: Gate[A]) = new Gate[B] {
   override def apply(value: B)(universe: Universe) =
     gate(f(value)(universe))(universe)
 
@@ -164,7 +164,7 @@ Looking at the type, `controlled: (B => Universe => A) => Gate[A] => Gate[B]`, y
 This difference in types is a complete description of the difference in the behavior of `controlled` and `contramap`: the only difference is that with `controlled`, you can change the value applied to the gate based on the state of each universe.
 
 This is perhaps most useful when composed with `multi`.
-If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Seq.empty` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
+If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Nil` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
 This behavior is analogous to traditional controlled operations in quantum computing; the `controlled` function is just more general.
 
 ### Unitarity
@@ -198,7 +198,21 @@ If one version of you is dead and the other version is alive, you actually *can*
 
 ## Puzzles
 
-**TODO**
+We designed *Superposition*'s game mechanics so that we could make puzzles based on real quantum circuits and algorithms.
+Of course, the hard part now is in actually designing enough fun and interesting puzzles to make a complete game.
+
+Our first real level was a kind of entanglement circuit.
+You start with a CNOT gate, an X gate, a quball in the |+> state, and another quball in the |0> state behind a locked door.
+To finish the level, you need the reach the goal which is behind another locked door.
+
+I won't spoil the solution, but I will give a hint.
+Doors are unlocked by quballs in the *on* state, and if a quball is in a superposition of on and off, the door is also in a superposition of unlocked and locked.
+But because movement is unitary, you can't just have one version of the player walk through the open door while the other player stays behind---both need to move in tandem.
+So a whole cat and a half-open door is no good.
+But if you entangle the cat with the quball that is in superposition, so that the alive cat is correlated with the on quball and the dead cat is correlated with the off quball, then you can walk through.
+
+We're planning to design more puzzles like this one but with increasing difficulty and circuit complexity, using more advanced gates and algorithms.
+If you're interested in getting involved with this or any other aspect of game design, like artwork, graphics, or sound, feel free to [get in touch or pick up a task][superposition-issues]!
 
 
 [applytoeach]: https://docs.microsoft.com/en-us/qsharp/api/qsharp/microsoft.quantum.canon.applytoeach
@@ -210,3 +224,4 @@ If one version of you is dead and the other version is alive, you actually *can*
 [qudit]: https://en.wikipedia.org/wiki/Qubit#Variations_of_the_qubit
 [rsoiffer]: https://github.com/rsoiffer
 [superposition]: https://github.com/samarsha/Superposition
+[superposition-issues]: https://github.com/samarsha/Superposition/issues
