@@ -37,7 +37,7 @@ Like the thought experiment, Schrödinger's cat gives us a bridge between the mi
 An important point of clarification: I'm using the many-worlds interpretation as a metaphor for the game's mechanics, since Rory and I decided to call our representation of superposition states in the game "universes" that are part of a "multiverse."
 But they are not the same thing as MWI.
 Universes in the game can be "recombined" even if different events happened in their history, unlike MWI.
-Also, *Superposition* doesn't allow measurement, and the rest of the game doesn't assume any particular interpretation of quantum mechanics, either.
+*Superposition* actually doesn't assume any particular interpretation of quantum mechanics---we forbid measurement for simplicity.
 
 The good news is that *Superposition* does actually model a mathematically accurate quantum system.
 Actually, the "universes" are just a fancy name for basis states and their corresponding probability amplitudes, and the "multiverse" is just the complete state of the system.
