@@ -251,7 +251,7 @@ If you're interested in getting involved with this or any other aspect of game d
 [cat]: https://en.wikipedia.org/wiki/Schr%C3%B6dinger%27s_cat
 [contravariant]: https://hackage.haskell.org/package/contravariant-1.4/docs/Data-Functor-Contravariant.html
 [copenhagen]: https://en.wikipedia.org/wiki/Copenhagen_interpretation
-[hilbert-space]: https://en.wikipedia.org/wiki/Hilbert_space
+[hilbert-space]: https://en.wikipedia.org/wiki/Hilbert_space#Quantum_mechanics
 [mwi]: https://en.wikipedia.org/wiki/Many-worlds_interpretation
 [qudit]: https://en.wikipedia.org/wiki/Qubit#Variations_of_the_qubit
 [rsoiffer]: https://github.com/rsoiffer
