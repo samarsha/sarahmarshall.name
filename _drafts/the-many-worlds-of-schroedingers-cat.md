@@ -141,8 +141,12 @@ $$
 \end{aligned}
 $$
 
+which should look familiar.
+For example, compare to the traditional $$H \ket{1} = \frac{1}{\sqrt{2}} \ket{0} - \frac{1}{\sqrt{2}} \ket{1}$$.
+
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
 To do this we need to associate more information with each term than just its probability amplitude and basis state, such as precise pixel positions on screen and animation timers.
+That's why we don't use the traditional matrix-vector representation of operators and states.
 
 Gates are the only way to change the state of the quantum system in *Superposition*.
 How does the player pick up a quball?
