@@ -107,7 +107,7 @@ For example:
 * *H* maps a\|0> to (a/sqrt(2) \|0>, a/sqrt(2) \|1>), and a\|1> to (a/sqrt(2) \|0>, -a/sqrt(2) \|1>).
 
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
-To do this we need to associate more information with each term than just its probability amplitude and basis state.
+To do this we need to associate more information with each term than just its probability amplitude and basis state, such as precise pixel positions on screen and animation timers.
 
 The meaning of the first parameter `value` depends on the specific gate used.
 Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
@@ -117,12 +117,6 @@ How does the player pick up a quball?
 By applying the *X* gate to qubit representing the quball's carried state.
 How does the player move?
 By applying the *Translate* gate to the qudit representing their position.
-
-### Unitarity
-
-All gates must be unitary, which ensures that any change to the game state is sound.
-
-**TODO**
 
 ### Transformations
 
@@ -134,7 +128,7 @@ Its type is:
 def contramap[A, B](f: B => A)(gate: Gate[A]): Gate[B]
 {% endhighlight %}
 
-This is called `contramap` instead of `map` because the order of the types is reversed.
+This is called `contramap` instead of `map` because the order of the types is reversed relative to `map`.
 The new `Gate[B]` applies the mapping function on its input of type `B` to transform it into type `A`, and only then can it call `Gate[A]`.
 If you're into Haskell, gates are actually [contravariant functors][contravariant].
 
@@ -155,7 +149,7 @@ Basically: if the sequence is empty, return the original universe unchanged.
 Otherwise, apply the first value to the gate in the initial universe, and then repeat for the remaining values using the universes produced by the first application.
 This is analogous to the [`ApplyToEach`][applytoeach] operation in Q#.
 
-A more complicated transformation is `controlled`, whose name is somewhat misleading if you're used to the traditional meaning of a controlled operation:
+A more complicated transformation is something we call `controlled`, whose name is somewhat misleading if you're used to the traditional meaning of a controlled operation:
 
 {% highlight scala %}
 def controlled[B](f: B => Universe => A)(gate: Gate[A]) = new Gate[B] {
@@ -170,7 +164,37 @@ Looking at the type, `controlled: (B => Universe => A) => Gate[A] => Gate[B]`, y
 This difference in types is a complete description of the difference in the behavior of `controlled` and `contramap`: the only difference is that with `controlled`, you can change the value applied to the gate based on the state of each universe.
 
 This is perhaps most useful when composed with `multi`.
-If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Seq()` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
+If you apply `multi` and then `controlled`, you can inspect the state of the universe and return `Seq(value)` if some condition is satisfied, which indicates applying the gate normally, or `Seq.empty` if the condition is not satisfied, which indicates not applying the gate (or applying the gate to no values).
+This behavior is analogous to traditional controlled operations in quantum computing; the `controlled` function is just more general.
+
+### Unitarity
+
+All gates must be unitary, which ensures that any change to the game state is sound.
+No matter what action the player takes, there must be a way to reverse it so that the system is in the same state it was before the action was taken.
+
+The reverse, or adjoint, of each gate is pretty obvious, and not that exciting.
+The adjoint of *X(qubit)* is *X(qubit)*.
+The adjoint of *Translate(qudit, dx, dy)* is *Translate(qudit, -dx, -dy)*.
+
+But unitarity also imposes some restrictions on the player's abilities that make the game more interesting and challenging.
+
+For example, let's say there are two quballs.
+You're carrying one of them, and the other one is on the floor.
+You want to drop the one you're carrying on top of the other one, without picking the other one up.
+You can't just reset the carried qubit of the quball you're carrying---that requires measurement.
+You have to use an *X* gate, but any control you use will target both quballs, because they share everything in common except for their carried state, and you can't control on a quball's carried state while also targeting its carried state with the same gate.
+This means that you *have* to pick up the quball on the floor when you drop the quball you're carrying.
+
+Another example is if you are in multiple places at the same time---a superposition of position.
+When the player moves, all copies of them move in the same direction simultaneously.
+This means that all copies must keep the same relative position; if moving in a direction would cause *any* copy to hit a wall, then *none* of them can move in that direction.
+If they could, then either you could walk through walls or move your copies closer together.
+The former would make some puzzles trivially easy and the latter would violate unitarity.
+
+This isn't to say that these things are impossible.
+You just need to be a little more creative and use gate controls to your advantage.
+For example, player movement is automatically controlled on the player being alive---naturally, you can't move if you're dead.
+If one version of you is dead and the other version is alive, you actually *can* change their relative positions in a way that's unitary.
 
 ## Puzzles
 
