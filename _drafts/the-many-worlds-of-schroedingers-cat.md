@@ -78,12 +78,12 @@ There are more basis states for position, so there are more possibilites for sup
 We need quantum gates to evolve the state of the system over time.
 We define a *gate* as two functions:
 
-{% highlight scala %}
+```scala
 trait Gate[A] {
   def apply(value: A)(universe: Universe): NonEmptyList[Universe]
   def adjoint: Gate[A]
 }
-{% endhighlight %}
+```
 
 `adjoint` is familiar if you know some quantum computing.
 It is the gate that does the reverse of the original gate when given the same argument.
@@ -124,9 +124,9 @@ Gates are functions, so they can be transformed like functions.
 An example is `contramap` which transforms the type of the input value to a gate.
 Its type is:
 
-{% highlight scala %}
+```scala
 def contramap[A, B](f: B => A)(gate: Gate[A]): Gate[B]
-{% endhighlight %}
+```
 
 This is called `contramap` instead of `map` because the order of the types is reversed relative to `map`.
 The new `Gate[B]` applies the mapping function on its input of type `B` to transform it into type `A`, and only then can it call `Gate[A]`.
@@ -134,7 +134,7 @@ If you're into Haskell, gates are actually [contravariant functors][contravarian
 
 Another example is `multi`, which takes a gate that operates on a single value of type `A` and creates a gate that operates a sequence of those values and accumulates the universes:
 
-{% highlight scala %}
+```scala
 def multi(gate: Gate[A]) = new Gate[Seq[A]] {
   override def apply(values: Seq[A])(universe: Universe) = values match {
     case Nil => NonEmptyList(universe)
@@ -143,7 +143,7 @@ def multi(gate: Gate[A]) = new Gate[Seq[A]] {
 
   override def adjoint = gate.adjoint.multi contramap (_.reverse)
 }
-{% endhighlight %}
+```
 
 Basically: if the sequence is empty, return the original universe unchanged.
 Otherwise, apply the first value to the gate in the initial universe, and then repeat for the remaining values using the universes produced by the first application.
@@ -151,14 +151,14 @@ This is analogous to the [`ApplyToEach`][applytoeach] operation in Q#.
 
 A more complicated transformation is something we call `controlled`, whose name is somewhat misleading if you're used to the traditional meaning of a controlled operation:
 
-{% highlight scala %}
+```scala
 def controlled[A, B](f: B => Universe => A)(gate: Gate[A]) = new Gate[B] {
   override def apply(value: B)(universe: Universe) =
     gate(f(value)(universe))(universe)
 
   override def adjoint = gate.adjoint controlled f
 }
-{% endhighlight %}
+```
 
 Looking at the type, `controlled: (B => Universe => A) => Gate[A] => Gate[B]`, you can see that it is identical to `contramap: (B => A) => Gate[A] => Gate[B]` except the mapping function also takes a universe.
 This difference in types is a complete description of the difference in the behavior of `controlled` and `contramap`: the only difference is that with `controlled`, you can change the value applied to the gate based on the state of each universe.
