@@ -201,7 +201,7 @@ This behavior is analogous to traditional controlled operations in quantum compu
 
 ### Unitarity
 
-All gates must be unitary, which ensures that any change to the game state is sound.
+All gates must be [unitary][unitarity], which ensures that any change to the game state is sound.
 No matter what action the player takes, there must be a way to reverse it so that the system is in the same state it was before the action was taken.
 
 The reverse, or adjoint, of each gate is pretty obvious, and not that exciting.
@@ -255,5 +255,6 @@ If you're interested in getting involved with this or any other aspect of game d
 [mwi]: https://en.wikipedia.org/wiki/Many-worlds_interpretation
 [qudit]: https://en.wikipedia.org/wiki/Qubit#Variations_of_the_qubit
 [rsoiffer]: https://github.com/rsoiffer
-[superposition]: https://github.com/samarsha/Superposition
 [superposition-issues]: https://github.com/samarsha/Superposition/issues
+[superposition]: https://github.com/samarsha/Superposition
+[unitarity]: https://en.wikipedia.org/wiki/Unitarity_(physics)
