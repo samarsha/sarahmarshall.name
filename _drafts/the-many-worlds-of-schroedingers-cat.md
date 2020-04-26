@@ -21,6 +21,13 @@ But let's consider a more modest question.
 [*Superposition*][superposition] is a video game that I'm making with my friend [Rory Soiffer][rsoiffer].
 The premise is: You are Schrödinger's cat, and you really can be in a superposition of alive and dead.
 
+<figure>
+  <a href="{% link /assets/superposition.png %}">
+    <img src="{% link /assets/superposition.png %}" alt="A screenshot of the game">
+  </a>
+  <figcaption>As you can see, we need an artist.</figcaption>
+</figure>
+
 It's a puzzle game, but we wanted to make it approachable and more like a 2D action-adventure game than a pure abstract puzzle game would be.
 The player directly controls Schrödinger's cat, and in real time instead of with discrete turns.
 But under the hood, a quantum system is being simulated.
