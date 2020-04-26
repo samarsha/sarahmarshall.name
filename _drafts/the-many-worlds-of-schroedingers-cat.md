@@ -44,7 +44,7 @@ Let's define our [Hilbert space][hilbert-space].
 The Hilbert space, which is really just the space of possible states that our game can be in, is the product of the states that each entity in the game can be in.
 As of the time of writing, we just have two entities that have quantum state: Schrödinger's cat, controlled by the player and who we will affectionately call *Erwin*; and *quballs*, which are ball-shaped qubits that can be picked up and moved around the level.
 
-By "quantum state," I mean that the state is a linear combination of basis states in **C**^*n*, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
+By "quantum state," I mean that the state is a linear combination of basis states in $$\mathbb{C}^n$$, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
 Each level contains a discrete grid, and each entity can be in one or more of these cells.
 That is, each cell is a basis state, and an entity is in a linear combination of them.
 This is in contrast with other state in the game that is not quantum, which we call *metadata*.
@@ -90,33 +90,58 @@ It is the gate that does the reverse of the original gate when given the same ar
 
 `apply` takes an arbitrary argument to give to the gate, and a universe in which to apply the gate.
 In return, the gate gives you one or more universes back.
+The meaning of the first parameter `value` depends on the specific gate used.
+Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
 
 Remember, when you see "universe," just think of a term in an equation representing a quantum state: a probability amplitude multipled by a basis state.
-In traditional quantum mechanics, we can describe the state of a two-qubit system as *|psi> = a|00> + b|01> + c|10> + d|11>*.
-Here, we say that we have four universes:
+In traditional quantum mechanics, we can describe the state of a two-qubit system as $$\ket{\psi} = a\ket{00} + b\ket{01} + c\ket{10} + d\ket{11}$$.
+Here, we instead say that we have four universes $$\ket{\psi} = \{U_a, U_b, U_c, U_d\}$$, where $$m_\alpha$$ represents additional metadata for $$U_\alpha$$ that I have omitted:
 
-1. *(d, {q1 -> 0, q0 -> 0})*
-2. *(a, {q1 -> 0, q0 -> 1})*
-3. *(b, {q1 -> 1, q0 -> 0})*
-4. *(c, {q1 -> 1, q0 -> 1})*
+$$
+\begin{aligned}
+  U_a &= \big(a, \{ q_0 \to 0, q_1 \to 0 \}, m_a\big) \\
+  U_b &= \big(b, \{ q_0 \to 1, q_1 \to 0 \}, m_b\big) \\
+  U_c &= \big(c, \{ q_0 \to 0, q_1 \to 1 \}, m_c\big) \\
+  U_d &= \big(d, \{ q_0 \to 1, q_1 \to 1 \}, m_d\big)
+\end{aligned}
+$$
 
-Then `apply` just maps a term to one or more terms.
-For example:
+Then `apply` just maps a universe (term) to one or more universes (terms).
+For example, let
 
-* *X* maps a\|0> to a\|1> and a\|1> to a\|0>.
-* *H* maps a\|0> to (a/sqrt(2) \|0>, a/sqrt(2) \|1>), and a\|1> to (a/sqrt(2) \|0>, -a/sqrt(2) \|1>).
+$$
+\begin{aligned}
+  U_0 &= \big(a, \{ q_0 \to 0 \}, m\big) \\
+  U_1 &= \big(a, \{ q_0 \to 1 \}, m\big)
+\end{aligned}
+$$
+
+where the only difference between $$U_0$$ and $$U_1$$ is the state of $$q_0$$; their amplitudes and metadata are identical.
+Define *division* of a universe $$U = (a, s, m)$$ with amplitude $$a \in \mathbb{C}$$, state $$s$$, and metadata $$m$$ by some constant $$c \in \mathbb{C}$$ as
+
+$$
+\frac{U}{c} = \left(\frac{a}{c}, s, m\right)
+$$
+
+Then the gates $$X$$ and $$H$$ would map
+
+$$
+\begin{aligned}
+  X(q_0, U_0) &= \left\{ U_1 \right\} \\
+  X(q_0, U_1) &= \left\{ U_0 \right\} \\
+  H(q_0, U_0) &= \left\{ \frac{U_0}{\sqrt{2}}, \frac{U_1}{\sqrt{2}} \right\} \\
+  H(q_0, U_1) &= \left\{ \frac{U_0}{\sqrt{2}}, -\frac{U_1}{\sqrt{2}} \right\} \\
+\end{aligned}
+$$
 
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
 To do this we need to associate more information with each term than just its probability amplitude and basis state, such as precise pixel positions on screen and animation timers.
 
-The meaning of the first parameter `value` depends on the specific gate used.
-Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
-
 Gates are the only way to change the state of the quantum system in *Superposition*.
 How does the player pick up a quball?
-By applying the *X* gate to qubit representing the quball's carried state.
+By applying the $$X$$ gate to qubit representing the quball's carried state.
 How does the player move?
-By applying the *Translate* gate to the qudit representing their position.
+By applying the $$\mathrm{Translate}$$ gate to the qudit representing their position.
 
 ### Transformations
 
@@ -173,8 +198,8 @@ All gates must be unitary, which ensures that any change to the game state is so
 No matter what action the player takes, there must be a way to reverse it so that the system is in the same state it was before the action was taken.
 
 The reverse, or adjoint, of each gate is pretty obvious, and not that exciting.
-The adjoint of *X(qubit)* is *X(qubit)*.
-The adjoint of *Translate(qudit, dx, dy)* is *Translate(qudit, -dx, -dy)*.
+The adjoint of $$X(q)$$ is $$X(q)$$.
+The adjoint of $$\mathrm{Translate}(q, dx, dy)$$ is $$\mathrm{Translate}(q, -dx, -dy)$$.
 
 But unitarity also imposes some restrictions on the player's abilities that make the game more interesting and challenging.
 
@@ -182,7 +207,7 @@ For example, let's say there are two quballs.
 You're carrying one of them, and the other one is on the floor.
 You want to drop the one you're carrying on top of the other one, without picking the other one up.
 You can't just reset the carried qubit of the quball you're carrying---that requires measurement.
-You have to use an *X* gate, but any control you use will target both quballs, because they share everything in common except for their carried state, and you can't control on a quball's carried state while also targeting its carried state with the same gate.
+You have to use an $$X$$ gate, but any control you use will target both quballs, because they share everything in common except for their carried state, and you can't control on a quball's carried state while also targeting its carried state with the same gate.
 This means that you *have* to pick up the quball on the floor when you drop the quball you're carrying.
 
 Another example is if you are in multiple places at the same time---a superposition of position.
@@ -202,10 +227,10 @@ We designed *Superposition*'s game mechanics so that we could make puzzles based
 Of course, the hard part now is in actually designing enough fun and interesting puzzles to make a complete game.
 
 Our first real level was a kind of entanglement circuit.
-You start with a CNOT gate, an X gate, a quball in the |+> state, and another quball in the |0> state behind a locked door.
+You start with a $$\mathrm{CNOT}$$ gate, an $$X$$ gate, a quball in the $$\ket{+}$$ state, and another quball in the $$\ket{0}$$ state behind a locked door.
 To finish the level, you need the reach the goal which is behind another locked door.
 
-I won't spoil the solution, but I will give a hint.
+I won't spoil the solution, but I'll give a hint.
 Doors are unlocked by quballs in the *on* state, and if a quball is in a superposition of on and off, the door is also in a superposition of unlocked and locked.
 But because movement is unitary, you can't just have one version of the player walk through the open door while the other player stays behind---both need to move in tandem.
 So a whole cat and a half-open door is no good.
