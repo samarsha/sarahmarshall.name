@@ -42,7 +42,7 @@ Let's define our [Hilbert space][hilbert-space].
 ## State space
 
 The Hilbert space, which is really just the space of possible states that our game can be in, is the product of the states that each entity in the game can be in.
-As of the time of writing, we just have two entities that have quantum state: Schrödinger's cat, controlled by the player and who we will affectionately call *Erwin*; and *quballs*, which are ball-shaped qubits that can be picked up and moved around the level.
+As of the time of writing, we just have two entities that have quantum state: Schrödinger's cat, controlled by the player, and *quballs*, which are ball-shaped qubits that can be picked up and moved around the level.
 
 By "quantum state," I mean that the state is a linear combination of basis states in $$\mathbb{C}^n$$, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
 Each level contains a discrete grid, and each entity can be in one or more of these cells.
@@ -54,7 +54,7 @@ A quantum gate is applied equally to every object in a cell, regardless of if it
 
 So here is a complete list of the quantum state for our two types of entities:
 
-| Erwin            | Quball                 |
+| Player           | Quball                 |
 |------------------|------------------------|
 | Current position | Current position       |
 | Alive or dead    | On or off              |
