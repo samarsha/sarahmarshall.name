@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The many worlds of Schrödinger's cat
 date: 2020-04-26 11:00 -0700
 ---

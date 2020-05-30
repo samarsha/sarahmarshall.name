@@ -1,5 +1,5 @@
 ---
-layout: home
+title: Sarah Marshall
 ---
 
 Hello!
@@ -15,8 +15,7 @@ As a school project, I co-created [KnitScript], a domain-specific programming la
 I'm really interested in constructed human languages like [Esperanto] and [Lojban] and how they affect the ways in which ideas can be communicated.
 In my spare time, I'm learning German.
 
-This is my personal website and blog where sometimes I might write about cool
-things I find or projects that I've been involved with.
+This is my personal website and blog where sometimes I might write about cool things I find or projects that I've been involved with.
 
 
 [esperanto]: https://en.wikipedia.org/wiki/Esperanto

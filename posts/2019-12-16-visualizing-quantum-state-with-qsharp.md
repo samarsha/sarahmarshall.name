@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Visualizing quantum state with Q#
 date: 2019-12-16 13:30 -0800
 ---

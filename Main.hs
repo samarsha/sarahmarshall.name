@@ -16,10 +16,11 @@ rules = do
     match "index.md" $ markdown "templates/home.html"
     match "posts/*.md" $ markdown "templates/post.html"
 
--- | Compiles a Markdown file to HTML and applies the template.
+-- | Compiles a Markdown file to an HTML page using the template.
 markdown :: Identifier -> Rules ()
 markdown template = do
     route $ setExtension "html"
     compile $ pandocCompiler
         >>= loadAndApplyTemplate template defaultContext
+        >>= loadAndApplyTemplate "templates/page.html" defaultContext
         >>= relativizeUrls
