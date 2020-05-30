@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module SarahWeb.Site (site) where
+module Main (main) where
 
 import GHC.IO.Encoding
 import Hakyll
 
 -- | The site generator.
-site :: IO ()
-site = setLocaleEncoding utf8 >> hakyll rules
+main :: IO ()
+main = setLocaleEncoding utf8 >> hakyll rules
 
 -- | The file rules.
 rules :: Rules ()

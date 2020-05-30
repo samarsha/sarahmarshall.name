@@ -1,4 +1,4 @@
-name: sarahweb
+name: sarahmarshall-name
 version: 0.1.0.0
 github: samarsha/samarsha.github.io
 author: Sarah Marshall
@@ -11,12 +11,6 @@ dependencies:
 - filepath
 - hakyll
 
-library:
-  source-dirs: src
-
 executables:
-  sarahweb-exe:
+  sarahmarshall-name:
     main: Main.hs
-    source-dirs: app
-    dependencies:
-    - sarahweb
