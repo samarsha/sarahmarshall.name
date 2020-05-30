@@ -1,6 +1,6 @@
 ---
 title: Visualizing quantum state with Q#
-date: 2019-12-16 13:30 -0800
+date: 2019-12-16
 ---
 
 A great thing you can do with quantum simulators that you can't do with a real

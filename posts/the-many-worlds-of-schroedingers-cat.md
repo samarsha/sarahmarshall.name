@@ -1,6 +1,6 @@
 ---
 title: The many worlds of Schrödinger's cat
-date: 2020-04-26 11:00 -0700
+date: 2020-04-26
 ---
 
 It started as a thought experiment to bring to light an apparent paradox of quantum mechanics, but the [many-worlds interpretation][mwi] sheds a different light on [Schrödinger's cat][cat].
