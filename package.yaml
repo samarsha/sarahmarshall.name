@@ -1,0 +1,21 @@
+name: sarahweb
+version: 0.1.0.0
+github: samarsha/samarsha.github.io
+author: Sarah Marshall
+maintainer: sarah@sarahmarshall.name
+copyright: 2020 Sarah Marshall
+description: The static site generator for www.sarahmarshall.name.
+
+dependencies:
+- base >= 4.7 && < 5
+- hakyll
+
+library:
+  source-dirs: src
+
+executables:
+  sarahweb-exe:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+    - sarahweb
