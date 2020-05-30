@@ -14,7 +14,7 @@ rules :: Rules ()
 rules = do
     match "templates/*" $ compile templateBodyCompiler
     match "index.md" $ markdown "templates/home.html"
-    match "posts/*.md" $ markdown "templates/post.html"
+    match "blog/*.md" $ markdown "templates/post.html"
 
 -- | Compiles a Markdown file to an HTML page using the template.
 markdown :: Identifier -> Rules ()
