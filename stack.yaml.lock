@@ -10,11 +10,11 @@ packages:
     git: https://github.com/jaspervdj/hakyll
     pantry-tree:
       size: 11758
-      sha256: 6915a168e19896da2beaf60f223a97d87feae545a4ffd1b16ef7077d76595ead
-    commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5
+      sha256: 9b20f836674fab0efd863bd21f68c8ecd5c283f3513cdadf92c750a7b8221616
+    commit: 8afbb62ed5e969d78d8664df205646504f52f278
   original:
     git: https://github.com/jaspervdj/hakyll
-    commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5
+    commit: 8afbb62ed5e969d78d8664df205646504f52f278
 snapshots:
 - completed:
     size: 530800

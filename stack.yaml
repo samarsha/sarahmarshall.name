@@ -5,4 +5,4 @@ packages:
 
 extra-deps:
 - git: https://github.com/jaspervdj/hakyll
-  commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5
+  commit: 8afbb62ed5e969d78d8664df205646504f52f278
