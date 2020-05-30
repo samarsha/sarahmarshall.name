@@ -51,7 +51,7 @@ Let's define our [Hilbert space][hilbert-space].
 The Hilbert space, which is really just the space of possible states that our game can be in, is the product of the states that each entity in the game can be in.
 As of the time of writing, we just have two entities that have quantum state: Schrödinger's cat, controlled by the player, and *quballs*, which are ball-shaped qubits that can be picked up and moved around the level.
 
-By "quantum state," I mean that the state is a linear combination of basis states in $$\mathbb{C}^n$$, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
+By "quantum state," I mean that the state is a linear combination of basis states in $\mathbb{C}^n$, where the coefficient on each basis state is the probability amplitude, and the squared magnitudes of the probability amplitudes must sum to one.
 Each level contains a discrete grid, and each entity can be in one or more of these cells.
 That is, each cell is a basis state, and an entity is in a linear combination of them.
 This is in contrast with other state in the game that is not quantum, which we call *metadata*.
@@ -101,8 +101,8 @@ The meaning of the first parameter `value` depends on the specific gate used.
 Usually, it contains the ID of the qudit whose state should be changed and any additional parameters that the gate needs, such as the degree of a rotation.
 
 Remember, when you see "universe," just think of a term in an equation representing a quantum state: a probability amplitude multipled by a basis state.
-In traditional quantum mechanics, we can describe the state of a two-qubit system as $$\ket{\psi} = a\ket{00} + b\ket{01} + c\ket{10} + d\ket{11}$$.
-Here, we instead say that we have four universes $$\ket{\psi} = \{U_a, U_b, U_c, U_d\}$$, where $$m_\alpha$$ represents additional metadata for $$U_\alpha$$ that I have omitted:
+In traditional quantum mechanics, we can describe the state of a two-qubit system as $\ket{\psi} = a\ket{00} + b\ket{01} + c\ket{10} + d\ket{11}$.
+Here, we instead say that we have four universes $\ket{\psi} = \{U_a, U_b, U_c, U_d\}$, where $m_\alpha$ represents additional metadata for $U_\alpha$ that I have omitted:
 
 $$
 \begin{aligned}
@@ -123,14 +123,14 @@ $$
 \end{aligned}
 $$
 
-where the only difference between $$U_0$$ and $$U_1$$ is the state of $$q_0$$; their amplitudes and metadata are identical.
-Define *division* of a universe $$U = (a, s, m)$$ with amplitude $$a \in \mathbb{C}$$, state $$s$$, and metadata $$m$$ by some constant $$c \in \mathbb{C}$$ as
+where the only difference between $U_0$ and $U_1$ is the state of $q_0$; their amplitudes and metadata are identical.
+Define *division* of a universe $U = (a, s, m)$ with amplitude $a \in \mathbb{C}$, state $s$, and metadata $m$ by some constant $c \in \mathbb{C}$ as
 
 $$
 \frac{U}{c} = \left(\frac{a}{c}, s, m\right)
 $$
 
-Then the gates $$X$$ and $$H$$ would map
+Then the gates $X$ and $H$ would map
 
 $$
 \begin{aligned}
@@ -142,7 +142,7 @@ $$
 $$
 
 which should look familiar.
-For example, compare to the traditional $$H \ket{1} = \frac{1}{\sqrt{2}} \ket{0} - \frac{1}{\sqrt{2}} \ket{1}$$.
+For example, compare to the traditional $H \ket{1} = \frac{1}{\sqrt{2}} \ket{0} - \frac{1}{\sqrt{2}} \ket{1}$.
 
 We go to the trouble of calling terms *universes* because we want to provide the illusion that each term represents an entire world, with its own processes and animations in the game, where all of the qudits have a particular classical state.
 To do this we need to associate more information with each term than just its probability amplitude and basis state, such as precise pixel positions on screen and animation timers.
@@ -150,9 +150,9 @@ That's why we don't use the traditional matrix-vector representation of operator
 
 Gates are the only way to change the state of the quantum system in *Superposition*.
 How does the player pick up a quball?
-By applying the $$X$$ gate to qubit representing the quball's carried state.
+By applying the $X$ gate to qubit representing the quball's carried state.
 How does the player move?
-By applying the $$\mathrm{Translate}$$ gate to the qudit representing their position.
+By applying the $\mathrm{Translate}$ gate to the qudit representing their position.
 
 ### Transformations
 
@@ -209,8 +209,8 @@ All gates must be [unitary][unitarity], which ensures that any change to the gam
 No matter what action the player takes, there must be a way to reverse it so that the system is in the same state it was before the action was taken.
 
 The reverse, or adjoint, of each gate is pretty obvious, and not that exciting.
-The adjoint of $$X(q)$$ is $$X(q)$$.
-The adjoint of $$\mathrm{Translate}(q, dx, dy)$$ is $$\mathrm{Translate}(q, -dx, -dy)$$.
+The adjoint of $X(q)$ is $X(q)$.
+The adjoint of $\mathrm{Translate}(q, dx, dy)$ is $\mathrm{Translate}(q, -dx, -dy)$.
 
 But unitarity also imposes some restrictions on the player's abilities that make the game more interesting and challenging.
 
@@ -218,7 +218,7 @@ For example, let's say there are two quballs.
 You're carrying one of them, and the other one is on the floor.
 You want to drop the one you're carrying on top of the other one, without picking the other one up.
 You can't just reset the carried qubit of the quball you're carrying---that requires measurement.
-You have to use an $$X$$ gate, but any control you use will target both quballs, because they share everything in common except for their carried state, and you can't control on a quball's carried state while also targeting its carried state with the same gate.
+You have to use an $X$ gate, but any control you use will target both quballs, because they share everything in common except for their carried state, and you can't control on a quball's carried state while also targeting its carried state with the same gate.
 This means that you *have* to pick up the quball on the floor when you drop the quball you're carrying.
 
 Another example is if you are in multiple places at the same time---a superposition of position.
@@ -238,7 +238,7 @@ We designed *Superposition*'s game mechanics so that we could make puzzles based
 Of course, the hard part now is in actually designing enough fun and interesting puzzles to make a complete game.
 
 Our first real level was a kind of entanglement circuit.
-You start with a $$\mathrm{CNOT}$$ gate, an $$X$$ gate, a quball in the $$\ket{+}$$ state, and another quball in the $$\ket{0}$$ state behind a locked door.
+You start with a $\mathrm{CNOT}$ gate, an $X$ gate, a quball in the $\ket{+}$ state, and another quball in the $\ket{0}$ state behind a locked door.
 To finish the level, you need the reach the goal which is behind another locked door.
 
 I won't spoil the solution, but I'll give a hint.

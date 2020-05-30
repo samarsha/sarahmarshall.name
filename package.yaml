@@ -9,9 +9,11 @@ description: The static site generator for www.sarahmarshall.name.
 dependencies:
 - base >= 4.7 && < 5
 - hakyll
+- pandoc
 
 executables:
   sarahmarshall-name:
     main: Main.hs
     ghc-options:
+    - -threaded
     - -Wall

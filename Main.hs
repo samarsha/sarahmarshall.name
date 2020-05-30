@@ -4,6 +4,7 @@ module Main (main) where
 
 import GHC.IO.Encoding
 import Hakyll
+import Text.Pandoc.Options
 
 -- | The site generator.
 main :: IO ()
@@ -23,7 +24,9 @@ rules = do
 markdown :: Identifier -> Rules ()
 markdown template = do
     route $ setExtension "html"
-    compile $ pandocCompiler
+    compile $ pandocCompilerWith
+        defaultHakyllReaderOptions
+        defaultHakyllWriterOptions { writerHTMLMathMethod = KaTeX defaultKaTeXURL }
         >>= loadAndApplyTemplate template defaultContext
         >>= loadAndApplyTemplate "templates/page.html" defaultContext
         >>= relativizeUrls
