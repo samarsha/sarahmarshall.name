@@ -22,8 +22,8 @@ But let's consider a more modest question.
 The premise is: You are Schrödinger's cat, and you really can be in a superposition of alive and dead.
 
 <figure>
-  <a href="/assets/superposition.png">
-    <img src="/assets/superposition.png" alt="A screenshot of the game">
+  <a href="/assets/blog/superposition.png">
+    <img src="/assets/blog/superposition.png" alt="A screenshot of the game">
   </a>
   <figcaption>As you can see, we need an artist.</figcaption>
 </figure>
