@@ -13,6 +13,9 @@ main = setLocaleEncoding utf8 >> hakyll rules
 rules :: Rules ()
 rules = do
     match "templates/*" $ compile templateBodyCompiler
+    match "assets/**" $ do
+        route idRoute
+        compile copyFileCompiler
     match "index.md" $ markdown "templates/home.html"
     match "blog/*.md" $ markdown "templates/post.html"
 
