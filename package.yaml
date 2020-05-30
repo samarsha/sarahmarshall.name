@@ -8,7 +8,6 @@ description: The static site generator for www.sarahmarshall.name.
 
 dependencies:
 - base >= 4.7 && < 5
-- filepath
 - hakyll
 
 executables:
