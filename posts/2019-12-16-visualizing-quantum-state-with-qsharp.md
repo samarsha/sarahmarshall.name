@@ -43,7 +43,7 @@ step, and animate the transitions between states. We can also remember all of
 the previous states and show them in a timeline so you can jump back and forth,
 making it easy to compare the quantum state at any two points in time.
 
-![Animated demo of the state visualizer]({% link /assets/state-visualizer/demo.gif %})
+![Animated demo of the state visualizer](/assets/state-visualizer/demo.gif)
 
 This is what the [Q# State Visualizer], one of the samples in the in the
 [Microsoft Quantum Development Kit samples][QDK samples] repository, does. I
@@ -70,7 +70,7 @@ to run the new code!
 
 Here's an overview of the visualizer's features.
 
-![Numbered sections in the state visualizer's UI]({% link /assets/state-visualizer/overview.png %})
+![Numbered sections in the state visualizer's UI](/assets/state-visualizer/overview.png)
 
 ### 1. Navigation
 
@@ -86,8 +86,7 @@ state used to be.
 
 ### 2. Timeline
 
-{:style="display: inline-block"}
-![Timeline in the state visualizer]({% link /assets/state-visualizer/timeline.png %}){:width="50%" height="50%"}
+![Timeline in the state visualizer](/assets/state-visualizer/timeline.png)
 
 The timeline on the left side shows all of the operations that have finished,
 are currently running, or are about to start. The lists are nested so operations
