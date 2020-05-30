@@ -14,3 +14,5 @@ dependencies:
 executables:
   sarahmarshall-name:
     main: Main.hs
+    ghc-options:
+    - -Wall
