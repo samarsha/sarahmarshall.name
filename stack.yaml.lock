@@ -3,7 +3,18 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    name: hakyll
+    version: 4.13.3.0
+    git: https://github.com/jaspervdj/hakyll
+    pantry-tree:
+      size: 11758
+      sha256: 6915a168e19896da2beaf60f223a97d87feae545a4ffd1b16ef7077d76595ead
+    commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5
+  original:
+    git: https://github.com/jaspervdj/hakyll
+    commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5
 snapshots:
 - completed:
     size: 530800

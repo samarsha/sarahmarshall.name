@@ -2,3 +2,7 @@ resolver: nightly-2020-05-26
 
 packages:
 - .
+
+extra-deps:
+- git: https://github.com/jaspervdj/hakyll
+  commit: 9656e78869dd8248a8558671a48d2e52dbe7edb5

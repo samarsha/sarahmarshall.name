@@ -12,11 +12,18 @@ import qualified System.FilePath.Posix as Posix
 site :: IO ()
 site = setLocaleEncoding utf8 >> hakyll rules
 
--- | The file routing rules.
+-- | The file rules.
 rules :: Rules ()
-rules = match "*.md" $ do
+rules = do
+    match "templates/*" $ compile templateBodyCompiler
+    match "index.md" $ markdown "templates/home.html"
+    match "posts/*.md" $ markdown "templates/post.html"
+
+-- | Compiles a Markdown file to HTML and applies the template.
+markdown :: Identifier -> Rules ()
+markdown template = do
     route $ setExtension "html"
-    compile $ pandocCompiler >>= relativizeUrls
+    compile $ pandocCompiler >>= loadAndApplyTemplate template defaultContext >>= relativizeUrls
 
 -- | Compiles an item by converting absolute URLs to relative URLs. Fixes a bug with Hakyll's
 -- `relativizeUrls` on Windows.
