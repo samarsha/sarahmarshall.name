@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Site
+import SarahWeb.Site
 
 main :: IO ()
 main = site

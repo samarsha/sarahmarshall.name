@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Site (site) where
+module SarahWeb.Site (site) where
 
 import GHC.IO.Encoding
 import Hakyll hiding (relativizeUrls)
