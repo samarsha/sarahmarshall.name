@@ -1,6 +1,6 @@
 ---
 title: The many worlds of Schrödinger's cat
-date: 2020-04-26
+published: 2020-04-26
 image: /assets/blog/superposition.png
 ---
 

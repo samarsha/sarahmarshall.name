@@ -1,6 +1,6 @@
 ---
 title: Visualizing quantum state with Q#
-date: 2019-12-16
+published: 2019-12-16
 image: /assets/blog/state-visualizer/demo.gif
 ---
 

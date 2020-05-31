@@ -54,6 +54,16 @@ img {
     max-width: 100%;
 }
 
+.date {
+    color: #999999;
+    margin-bottom: 40px;
+    margin-top: -20px;
+}
+
+.teaser .date {
+    margin-bottom: 0;
+}
+
 code, pre {
     font-family: "Fira Code", monospace;
 }
@@ -72,6 +82,10 @@ figure {
     padding-left: 0;
     padding-right: 0;
     text-align: center;
+}
+figure.cover {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 figcaption {
