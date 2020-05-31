@@ -100,9 +100,10 @@ pre.sourceCode, pre:not(.sourceCode) > code, figcaption {
     bottom: 0;
     content: "";
     height: 20%;
+    left: 0;
     pointer-events: none;
     position: absolute;
-    width: 100%;
+    right: 0;
 }
 
 .teaser .date {
