@@ -2,14 +2,14 @@ $body$
 
 $for(posts)$
   <section class="teaser">
-    <h2>
-      <a href="$url$">$title$</a>
-    </h2>
+    <a class="overlay" href="$url$"></a>
+    
+    <h2><a href="$url$">$title$</a></h2>
     <div class="date">
       <time datetime="$published$">$date$</time>
     </div>
     <figure class="cover">
-      <a href="$url$"><img src="$image$"></a>
+      <img src="$image$">
     </figure>
 
     $teaser$
