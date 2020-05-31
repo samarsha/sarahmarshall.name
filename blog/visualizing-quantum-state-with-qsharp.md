@@ -1,6 +1,7 @@
 ---
 title: Visualizing quantum state with Q#
 date: 2019-12-16
+image: /assets/blog/state-visualizer/demo.gif
 ---
 
 A great thing you can do with quantum simulators that you can't do with a real
