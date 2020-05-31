@@ -25,7 +25,7 @@ rules = do
 
     match "blog/*.md" $ markdown "templates/post.html" postContext
   where
-    recentPosts = take 5 <$> (loadAll "blog/*" >>= recentFirst)
+    recentPosts = take 5 <$> loadAll "blog/*" >>= recentFirst
 
 -- | Compiles a Markdown file to an HTML page using the template and context.
 markdown :: Identifier -> Context String -> Rules ()
