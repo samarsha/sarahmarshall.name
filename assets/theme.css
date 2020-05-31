@@ -25,6 +25,27 @@ header, footer {
     color: #dddddd;
 }
 
+h1 {
+    font-size: 28pt;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: #5d7caa;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: #8694aa;
+}
+
+/* Header */
+
 header {
     margin-bottom: 50px;
 }
@@ -45,29 +66,6 @@ header a:before {
     font-family: "Fira Code", monospace;
     position: absolute;
     right: calc(100% + 10px);
-}
-
-footer {
-    margin-top: 50px;
-}
-
-h1 {
-    font-size: 28pt;
-}
-
-img {
-    max-width: 100%;
-}
-
-a {
-    color: #5d7caa;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-a:visited {
-    color: #8694aa;
 }
 
 /* Full-Width Elements */
@@ -152,4 +150,25 @@ pre.sourceCode, pre:not(.sourceCode) > code {
 code:not(.sourceCode) {
     padding-left: 5px;
     padding-right: 5px;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 40px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+footer > div {
+    align-items: center;
+    display: flex;
+}
+footer > div > * {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+footer .author {
+    font-size: 24pt;
+    font-weight: bold;
 }
