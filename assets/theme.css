@@ -77,6 +77,22 @@ pre.sourceCode, pre:not(.sourceCode) > code, figcaption {
     margin-top: -20px;
 }
 
+/* Teasers */
+
+.teaser {
+    position: relative;
+}
+
+.teaser:before {
+    background-image: linear-gradient(to bottom, transparent, #eeeeee);
+    bottom: 0;
+    content: "";
+    height: 20%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
 .teaser .date {
     margin-bottom: 0;
 }
