@@ -3,6 +3,8 @@
 
 @import url("code.css");
 
+/* Basic Elements */
+
 body {
     background-color: #eeeeee;
     color: #444444;
@@ -54,6 +56,21 @@ img {
     max-width: 100%;
 }
 
+/* Full-Width Elements */
+
+div.sourceCode, pre:not(.sourceCode), figure {
+    max-width: none;
+}
+
+pre.sourceCode, pre:not(.sourceCode) > code, figcaption {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 950px;
+}
+
+/* Dates */
+
 .date {
     color: #999999;
     margin-bottom: 40px;
@@ -64,19 +81,7 @@ img {
     margin-bottom: 0;
 }
 
-code, pre {
-    font-family: "Fira Code", monospace;
-}
-
-div.sourceCode, figure {
-    max-width: none;
-}
-
-pre.sourceCode, figcaption {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 950px;
-}
+/* Figures */
 
 figure {
     padding-left: 0;
@@ -95,14 +100,26 @@ figcaption {
     padding-right: 20px;
 }
 
-code:not(.sourceCode) {
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+/* Code */
+
+code, pre {
+    font-family: "Fira Code", monospace;
 }
 
-pre {
+pre:not(.sourceCode), code:not(.sourceCode) {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+pre, pre:not(.sourceCode) > code {
     overflow-x: auto;
+}
+
+pre.sourceCode, pre:not(.sourceCode) > code {
     padding: 10px;
+}
+
+code:not(.sourceCode) {
+    padding-left: 5px;
+    padding-right: 5px;
 }
