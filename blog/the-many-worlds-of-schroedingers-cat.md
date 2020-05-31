@@ -7,6 +7,8 @@ It started as a thought experiment to bring to light an apparent paradox of quan
 In a real sense---if you're willing to accept the premise of many worlds---Schrödinger's cat *can* be both alive and dead at the same time.
 The wave function never collapses: what we see as collapse is only an illusion, brought on by entanglement between the observer, the observee, and the rest of the environment, as the universe diverges to realize all possible measurement outcomes simultaneously.
 
+<!-- more -->
+
 It's a framework that has profound implications for the true nature of reality.
 Although it may be difficult or impossible to find direct evidence for many worlds, the interpretation is worth considering because it does away with wave function collapse and the arbitrary separation between the "microscopic" and the "macroscopic" that exists in the [Copenhagen interpretation][copenhagen], while still remaining consistent with observations.
 

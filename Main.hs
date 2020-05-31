@@ -22,8 +22,8 @@ rules = do
 
     match "index.md" $ markdown "templates/home.html" $ do
         posts <- take 5 <$> loadAll "blog/*" >>= recentFirst
-        return $ defaultContext <>
-            listField "posts" defaultContext (return posts)
+        let postContext = defaultContext <> teaserContext
+        return $ defaultContext <> listField "posts" postContext (return posts)
 
     match "blog/*.md" $ markdown "templates/post.html" $ return defaultContext
 
@@ -34,9 +34,18 @@ markdown template context = do
     compile $ do
         ctx <- context
         pandocCompilerWith readerOptions writerOptions
+            >>= saveSnapshot beforeTemplates
             >>= loadAndApplyTemplate template ctx
             >>= loadAndApplyTemplate "templates/page.html" defaultContext
             >>= relativizeUrls
   where
     readerOptions = defaultHakyllReaderOptions
     writerOptions = defaultHakyllWriterOptions { writerHTMLMathMethod = KaTeX defaultKaTeXURL }
+
+-- | The snapshot for compiled content before templates are applied.
+beforeTemplates :: Snapshot
+beforeTemplates = "beforeTemplates"
+
+-- | A context with a `teaser` field.
+teaserContext :: Context String
+teaserContext = teaserFieldWithSeparator "<!-- more -->" "teaser" beforeTemplates

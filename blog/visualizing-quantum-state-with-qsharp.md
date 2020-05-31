@@ -11,6 +11,8 @@ problem is, much like you would add print statements to debug a classical
 program. Or perhaps nothing is wrong, but you want to trace the execution of a
 quantum algorithm for demonstration purposes.
 
+<!-- more -->
+
 When you want to look at the quantum state of a Q# program, the easiest way is
 to use [`DumpMachine`] or [`DumpRegister`]. These functions show you a little
 table like this on the console:
