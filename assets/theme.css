@@ -161,16 +161,27 @@ footer {
     padding-bottom: 30px;
     padding-top: 30px;
 }
-footer > div {
-    align-items: center;
-    display: flex;
-}
-footer > div > * {
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-}
 footer .author {
     font-size: 24pt;
     font-weight: bold;
+}
+
+@media (min-width: 900px) {
+    footer > div {
+        align-items: center;
+        display: flex;
+    }
+    footer > div > * {
+        flex-basis: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    footer > div > *:first-child {
+        padding-left: 0;
+    }
+    footer > div > *:last-child {
+        padding-right: 0;
+    }
 }
