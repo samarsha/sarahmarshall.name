@@ -20,10 +20,10 @@ rules = do
 
     match "templates/*" $ compile templateBodyCompiler
 
-    match "index.md" $ markdown "templates/home.html" $ defaultContext <>
-        listField "posts" (defaultContext <> teaserContext) recentPosts
+    match "index.md" $ markdown "templates/home.html" $
+        listField "posts" teaserContext recentPosts <> defaultContext
 
-    match "blog/*.md" $ markdown "templates/post.html" defaultContext
+    match "blog/*.md" $ markdown "templates/post.html" postContext
   where
     recentPosts = take 5 <$> (loadAll "blog/*" >>= recentFirst)
 
@@ -44,6 +44,10 @@ markdown template context = do
 beforeTemplates :: Snapshot
 beforeTemplates = "beforeTemplates"
 
--- | A context with a `teaser` field.
+-- | The post context with a `teaser` field.
 teaserContext :: Context String
-teaserContext = teaserFieldWithSeparator "<!-- more -->" "teaser" beforeTemplates
+teaserContext = teaserFieldWithSeparator "<!-- more -->" "teaser" beforeTemplates <> postContext
+
+-- | The default context with a formatted `date` field.
+postContext :: Context String
+postContext = dateField "date" "%B %e, %Y" <> defaultContext
