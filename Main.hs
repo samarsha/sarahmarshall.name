@@ -20,24 +20,22 @@ rules = do
 
     match "templates/*" $ compile templateBodyCompiler
 
-    match "index.md" $ markdown "templates/home.html" $ do
-        posts <- take 5 <$> loadAll "blog/*" >>= recentFirst
-        let postContext = defaultContext <> teaserContext
-        return $ defaultContext <> listField "posts" postContext (return posts)
+    match "index.md" $ markdown "templates/home.html" $ defaultContext <>
+        listField "posts" (defaultContext <> teaserContext) recentPosts
 
-    match "blog/*.md" $ markdown "templates/post.html" $ return defaultContext
+    match "blog/*.md" $ markdown "templates/post.html" defaultContext
+  where
+    recentPosts = take 5 <$> (loadAll "blog/*" >>= recentFirst)
 
 -- | Compiles a Markdown file to an HTML page using the template and context.
-markdown :: Identifier -> Compiler (Context String) -> Rules ()
+markdown :: Identifier -> Context String -> Rules ()
 markdown template context = do
     route $ setExtension "html"
-    compile $ do
-        ctx <- context
-        pandocCompilerWith readerOptions writerOptions
-            >>= saveSnapshot beforeTemplates
-            >>= loadAndApplyTemplate template ctx
-            >>= loadAndApplyTemplate "templates/page.html" defaultContext
-            >>= relativizeUrls
+    compile $ pandocCompilerWith readerOptions writerOptions
+        >>= saveSnapshot beforeTemplates
+        >>= loadAndApplyTemplate template context
+        >>= loadAndApplyTemplate "templates/page.html" defaultContext
+        >>= relativizeUrls
   where
     readerOptions = defaultHakyllReaderOptions
     writerOptions = defaultHakyllWriterOptions { writerHTMLMathMethod = KaTeX defaultKaTeXURL }
