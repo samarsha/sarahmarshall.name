@@ -79,6 +79,10 @@ td {
     display: none;
 }
 
+#disqus_thread {
+    margin-top: 40px;
+}
+
 /* Header */
 
 header {
