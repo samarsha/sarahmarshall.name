@@ -104,7 +104,7 @@ header a:before {
     content: ">>=";
     font-family: "Fira Code", monospace;
     position: absolute;
-    right: calc(100% + 10px);
+    right: 100%;
 }
 
 /* Full-Width Elements */
