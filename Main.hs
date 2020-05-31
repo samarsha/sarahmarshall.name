@@ -5,6 +5,7 @@ module Main (main) where
 
 import GHC.IO.Encoding
 import Hakyll
+import Text.Pandoc.Highlighting
 import Text.Pandoc.Options
 
 -- | Runs the site generator.
@@ -17,6 +18,10 @@ rules = do
     match "assets/**" $ do
         route idRoute
         compile copyFileCompiler
+
+    create ["assets/code.css"] $ do
+        route idRoute
+        compile $ makeItem $ styleToCss tango
 
     match "templates/*" $ compile templateBodyCompiler
 

@@ -1,8 +1,12 @@
 $body$
 
 $for(posts)$
-  <h2><a href="$url$">$title$</a></h2>
+  <h2>
+    <a href="$url$">$title$</a>
+  </h2>
   <p>$date$</p>
-  <p><img src="$image$"></p>
+  <div>
+    <img src="$image$">
+  </div>
   $teaser$
 $endfor$

@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap");
+
+@import url("code.css");
+
+body {
+    background-color: #eeeeee;
+    color: #444444;
+    font-family: "Nunito", sans-serif;
+    font-size: 14pt;
+    margin: 0;
+    text-align: justify;
+}
+body > * > * {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 950px;
+    padding: 0 25px;
+}
+
+header, footer {
+    background-color: #2a333f;
+    color: #dddddd;
+}
+
+header {
+    margin-bottom: 50px;
+}
+header a {
+    color: #dddddd;
+    display: block;
+    font-size: 46pt;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    position: relative;
+    text-decoration: none;
+}
+header a:before {
+    content: ">>=";
+    font-family: "Fira Code", monospace;
+    position: absolute;
+    right: calc(100% + 10px);
+}
+
+footer {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 28pt;
+}
+
+img {
+    max-width: 100%;
+}
+
+code, pre {
+    font-family: "Fira Code", monospace;
+}
+
+div.sourceCode, figure {
+    max-width: none;
+}
+
+pre.sourceCode, figcaption {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 950px;
+}
+
+figure {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+figcaption {
+    color: #999999;
+    font-style: italic;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+code:not(.sourceCode) {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+pre {
+    overflow-x: auto;
+    padding: 10px;
+}
