@@ -37,6 +37,9 @@ header a {
     position: relative;
     text-decoration: none;
 }
+header a:visited {
+    color: inherit;
+}
 header a:before {
     content: ">>=";
     font-family: "Fira Code", monospace;
@@ -54,6 +57,17 @@ h1 {
 
 img {
     max-width: 100%;
+}
+
+a {
+    color: #5d7caa;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: #8694aa;
 }
 
 /* Full-Width Elements */
