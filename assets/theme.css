@@ -29,10 +29,6 @@ h1 {
     font-size: 28pt;
 }
 
-img {
-    max-width: 100%;
-}
-
 a {
     color: #5d7caa;
     text-decoration: none;
@@ -42,6 +38,35 @@ a:hover {
 }
 a:visited {
     color: #8694aa;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+}
+
+th:first-child, td:first-child {
+    padding-left: 0;
+}
+
+th:last-child, td:last-child {
+    padding-right: 0;
+}
+
+td {
+    border-color: #cccccc;
+    border-style: solid;
+    border-width: 1px 0 0 0;
 }
 
 /* Header */
