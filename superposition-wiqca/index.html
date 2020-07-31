@@ -85,7 +85,7 @@
               <li class="fragment">
                 <p>Make a game about a cat</p>
                 <p style="text-align: center">
-                  <img width="256" style="image-rendering: crisp-edges" src="assets/cat.png">
+                  <img width="256" class="pixel" src="assets/cat.png">
                 </p>
               </li>
             </ol>
@@ -102,7 +102,7 @@
               <li class="fragment">
                 <p>You can be both alive and dead!</p>
                 <p style="text-align: center">
-                  <img style="image-rendering: crisp-edges" src="assets/alive-dead.png">
+                  <img class="pixel" src="assets/alive-dead.png">
                 </p>
               </li>
               <li class="fragment">Every action is a quantum operation</li>
@@ -111,12 +111,12 @@
 
           <section>
             <p>Everything looks normal...</p>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/normal.png">
+            <img class="r-stretch pixel" src="assets/normal.png">
           </section>
 
           <section>
             <p>...until you add superposition.</p>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/abnormal.png">
+            <img class="r-stretch pixel" src="assets/abnormal.png">
           </section>
 
           <section>
@@ -132,11 +132,11 @@
             <div class="r-stack">
               <div class="fragment fade-out" data-fragment-index="0">
                 <p>Lasers kill the cat.</p>
-                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser-dead.png">
+                <img class="r-stretch pixel" src="assets/laser-dead.png">
               </div>
               <div class="fragment" data-fragment-index="0">
                 <p>But they also bring him back to life!</p>
-                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser-alive.png">
+                <img class="r-stretch pixel" src="assets/laser-alive.png">
               </div>
             </div>
           </section>
@@ -156,7 +156,7 @@
 
           <section>
             <p>Unitarity means some actions are impossible.</p>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/cats-wall.png">
+            <img class="r-stretch pixel" src="assets/cats-wall.png">
           </section>
 
           <section>
@@ -176,18 +176,18 @@
             <div class="r-stack r-stretch">
               <div class="fragment fade-out" data-fragment-index="0">
                 <p>The door is locked...</p>
-                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/door-locked.png">
+                <img class="r-stretch pixel" src="assets/door-locked.png">
               </div>
               <div class="fragment r-stretch" data-fragment-index="0">
                 <p>It can be unlocked with a quball in the right state.</p>
-                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/door-unlocked.png">
+                <img class="r-stretch pixel" src="assets/door-unlocked.png">
               </div>
             </div>
           </section>
 
           <section>
             <h2>Quball</h2>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/quballs.png">
+            <img class="r-stretch pixel" src="assets/quballs.png">
           </section>
         </section>
 
@@ -206,7 +206,7 @@
           </section>
 
           <section>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/cat-corners.png">
+            <img class="r-stretch pixel" src="assets/cat-corners.png">
           </section>
 
           <section>
@@ -217,7 +217,7 @@
             <p>Pixel position and animation timers aren't part of the quantum state.</p>
             <div class="fragment">
               <p>But they can still <em>depend</em> on the quantum state.</p>
-              <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/alive-dead-moved.png">
+              <img class="r-stretch pixel" src="assets/alive-dead-moved.png">
             </div>
           </section>
 
@@ -269,8 +269,8 @@
           </section>
 
           <section>
-            <img width="128" style="image-rendering: crisp-edges" src="assets/cat.png">
-            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <img width="128" class="pixel" src="assets/cat.png">
+            <img width="128" class="pixel" src="assets/quball.png">
             <p class="fragment">
               \[
                 \begin{align*}
@@ -285,11 +285,11 @@
           </section>
 
           <section>
-            <img width="128" style="image-rendering: crisp-edges" src="assets/cat.png">
-            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
-            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
-            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
-            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <img width="128" class="pixel" src="assets/cat.png">
+            <img width="128" class="pixel" src="assets/quball.png">
+            <img width="128" class="pixel" src="assets/quball.png">
+            <img width="128" class="pixel" src="assets/quball.png">
+            <img width="128" class="pixel" src="assets/quball.png">
             <p class="fragment">
               \[
                 \begin{align*}
@@ -387,7 +387,7 @@
           </section>
 
           <section>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser.png">
+            <img class="r-stretch pixel" src="assets/laser.png">
             <p>Lasers aren't just an $X$ gate.</p>
 
             <aside class="notes">
@@ -397,7 +397,7 @@
           </section>
 
           <section>
-            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser.png">
+            <img class="r-stretch pixel" src="assets/laser.png">
             <pre class="scala"><code data-trim data-noescape>
               // Targets is a QExpr[List[Qubit]].
               val targets = beamHits(multiverse, entity)
