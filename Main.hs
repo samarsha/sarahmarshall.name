@@ -15,9 +15,8 @@ main = setLocaleEncoding utf8 >> hakyll rules
 -- | The file rules.
 rules :: Rules ()
 rules = do
-    match "assets/**" $ do
-        route idRoute
-        compile copyFileCompiler
+    copy "assets/**"
+    copy "superposition-wiqca/**"
 
     create ["assets/code.css"] $ do
         route idRoute
@@ -31,6 +30,11 @@ rules = do
     match "blog/*.md" $ markdown "templates/post.html" postContext
   where
     recentPosts = take 5 <$> loadAll "blog/*" >>= recentFirst
+
+copy :: Pattern -> Rules ()
+copy pattern = match pattern $ do
+    route idRoute
+    compile copyFileCompiler
 
 -- | Compiles a Markdown file to an HTML page using the template and context.
 markdown :: Identifier -> Context String -> Rules ()

@@ -1,0 +1,524 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Many Worlds of Schrödinger's Cat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <p>The Many Worlds of Schrödinger's Cat</p>
+            <img class="r-stretch" src="assets/superposition.png">
+            <ul class="title-info">
+              <li>Sarah Marshall</li>
+              <li>July 30th, 2020</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>About me</h2>
+            <div style="display: flex; align-items: center">
+              <img style="width: 20%; margin-right: 50px" src="assets/sarah.jpg">
+              <ul>
+                <li>Software engineer at Microsoft&nbsp;Quantum</li>
+                <li class="fragment">I work on Q#</li>
+                <li class="fragment">The game is not related to my job 🙂</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Overview</h2>
+            <ol>
+              <li class="fragment">A couple other quantum games</li>
+              <li class="fragment">What is <em>Superposition</em>?</li>
+              <li class="fragment">✨ A live demo ✨</li>
+              <li class="fragment">How <em>Superposition</em> simulates quantum state</li>
+              <li class="fragment">How we describe complex quantum behavior in <em>Superposition</em></li>
+            </ol>
+          </section>
+
+          <section>
+            <p>I hope this talk will:</p>
+            <ol>
+              <li class="fragment">Show off a fun quantum cat game</li>
+              <li class="fragment">Provide some new ways of thinking about quantum computing</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Quantum games</h1>
+          </section>
+
+          <section>
+            <h2>Quantum Game with Photons</h2>
+            <img class="r-stretch" src="assets/photons-game.jpg">
+          </section>
+
+          <section>
+            <h2>Hello Quantum</h2>
+            <video class="r-stretch" src="assets/hello-quantum.mov" autoplay controls loop></video>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1><em>Superposition</em></h1>
+            <img class="r-stretch" src="assets/superposition.png">
+          </section>
+
+          <section>
+            <h2>Why make <em>Superposition</em>?</h2>
+            <ol>
+              <li class="fragment">Make a game that teaches real quantum algorithms</li>
+              <li class="fragment">Visualize more complex superposition states intuitively</li>
+              <li class="fragment">
+                <p>Make a game about a cat</p>
+                <p style="text-align: center">
+                  <img width="256" style="image-rendering: crisp-edges" src="assets/cat.png">
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <p><em>Superposition</em> is a quantum puzzle game started by me and Rory Soiffer in summer 2019.</p>
+          </section>
+
+          <section>
+            <h2>The premise</h2>
+            <ul>
+              <li class="fragment">You play as Schrödinger's cat inside the box</li>
+              <li class="fragment">
+                <p>You can be both alive and dead!</p>
+                <p style="text-align: center">
+                  <img style="image-rendering: crisp-edges" src="assets/alive-dead.png">
+                </p>
+              </li>
+              <li class="fragment">Every action is a quantum operation</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>Everything looks normal...</p>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/normal.png">
+          </section>
+
+          <section>
+            <p>...until you add superposition.</p>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/abnormal.png">
+          </section>
+
+          <section>
+            <p><em>Superposition</em> is a mathematically accurate quantum simulation.</p>
+            <p class="fragment">That means every action is <em>unitary</em>.</p>
+            <div class="fragment">
+              <hr>
+              <p><em>Intuition:</em> Every action in the game preserves quantum information and can always be reversed by another action.</p>
+            </div>
+          </section>
+
+          <section>
+            <div class="r-stack">
+              <div class="fragment fade-out" data-fragment-index="0">
+                <p>Lasers kill the cat.</p>
+                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser-dead.png">
+              </div>
+              <div class="fragment" data-fragment-index="0">
+                <p>But they also bring him back to life!</p>
+                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser-alive.png">
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <p>Lasers apply the X gate to anything they hit.</p>
+          </section>
+
+          <section>
+            <p>Every action is reversible. In theory, you can't get stuck. 😉</p>
+            <p class="fragment">...but we still have a reset button.</p>
+
+            <aside class="notes">
+              ...because states can still become arbitrarily complex and extremely hard to reverse.
+            </aside>
+          </section>
+
+          <section>
+            <p>Unitarity means some actions are impossible.</p>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/cats-wall.png">
+          </section>
+
+          <section>
+            <h2>What about measurement?</h2>
+            <p class="fragment">Measurement isn't unitary, so we don't have it!</p>
+
+            <aside class="notes">
+              Principle of deferred measurement.
+            </aside>
+          </section>
+
+          <section>
+            <h2>Goal</h2>
+          </section>
+
+          <section>
+            <div class="r-stack r-stretch">
+              <div class="fragment fade-out" data-fragment-index="0">
+                <p>The door is locked...</p>
+                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/door-locked.png">
+              </div>
+              <div class="fragment r-stretch" data-fragment-index="0">
+                <p>It can be unlocked with a quball in the right state.</p>
+                <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/door-unlocked.png">
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Quball</h2>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/quballs.png">
+          </section>
+        </section>
+
+        <section>
+          <h1>Let's play <em>Superposition</em></h1>
+        </section>
+
+        <section>
+          <section>
+            <h1>Quantum simulation</em></h1>
+          </section>
+
+          <section>
+            <h2>Quantum state</h2>
+            <p>What is part of the quantum state, and what isn't?</p>
+          </section>
+
+          <section>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/cat-corners.png">
+          </section>
+
+          <section>
+            <img class="r-stretch" style="image-rendering: crisp-edges; background-color: slategray" src="assets/door-animation.png">
+          </section>
+
+          <section>
+            <p>Pixel position and animation timers aren't part of the quantum state.</p>
+            <div class="fragment">
+              <p>But they can still <em>depend</em> on the quantum state.</p>
+              <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/alive-dead-moved.png">
+            </div>
+          </section>
+
+          <section>
+            <p>A <em>basis state</em> corresponds to a <em>probability amplitude</em>.</p>
+            <p>
+              \[
+                |\textrm{Alive}\rangle \to \frac{1}{\sqrt{2}}
+                \quad\quad
+                |\textrm{Dead}\rangle \to \frac{1}{\sqrt{2}}
+              \]
+            </p>
+            <div class="fragment">
+              <p>We say that it also corresponds to a set of <em>metadata</em>.</p>
+              <p>
+                \begin{align*}
+                  |\textrm{Alive}\rangle &\to \left(\frac{1}{\sqrt{2}}, \{ \textrm{Pixel} \to (10, 12) \}\right) \\
+                  |\textrm{Dead}\rangle &\to \left(\frac{1}{\sqrt{2}}, \{ \textrm{Pixel} \to (25, 52) \}\right)
+                \end{align*}
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <p>We call this combination&mdash;basis state, probability amplitude and metadata&mdash;a <em>universe</em>.</p>
+            <p class="fragment">The complete quantum state is the <em>multiverse</em>.</p>
+          </section>
+
+          <section>
+            <p>Pixel position is metadata, but a cell position is a <em>qudit</em>.</p>
+            <p>
+              \[ |\textrm{Cat}\rangle = |\textrm{Alive}\rangle \otimes |(2, 0)\rangle \]
+            </p>
+            <pre class="scala fragment"><code data-trim>
+              val alive = allocate(initialValue = true)
+              val cell = allocate(initialValue = Vector2(2, 0))
+            </code></pre>
+          </section>
+
+          <section>
+            <img class="r-stretch" src="assets/empty-room.png">
+          </section>
+
+          <section>
+            <h3>State vector...?</h3>
+            <p class="fragment">
+              \[ 14 \times 6 = 84\;\textrm{possible positions} \]
+            </p>
+          </section>
+
+          <section>
+            <img width="128" style="image-rendering: crisp-edges" src="assets/cat.png">
+            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <p class="fragment">
+              \[
+                \begin{align*}
+                  &84\;\textrm{positions for cat} \\
+                  \times\;&2\;\textrm{states for cat alive/dead} \\
+                  \times\;&84\;\textrm{positions for quball} \\
+                  \times\;&2\;\textrm{states for quball on/off} \\
+                  =\;&28,224\;\textrm{components in state vector}
+                \end{align*}
+              \]
+            </p>
+          </section>
+
+          <section>
+            <img width="128" style="image-rendering: crisp-edges" src="assets/cat.png">
+            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <img width="128" style="image-rendering: crisp-edges" src="assets/quball.png">
+            <p class="fragment">
+              \[
+                \begin{align*}
+                  &28,224 \\
+                  \times\;&(84 \times 2)^3 \\
+                  =\;&133,827,821,568\;\textrm{components}
+                \end{align*}
+              \]
+            </p>
+          </section>
+
+          <section>
+            <div class="r-stack">
+              <p>
+                \[
+                  |\psi\rangle = \begin{pmatrix} 1/\sqrt{2} \\ 0 \\ 0 \\ 1/\sqrt{2} \\ 0 \\ 0 \\ 0 \\ 0 \\ \vdots \end{pmatrix}
+                \]
+              </p>
+              <p class="fragment" style="font-size: 150pt">🚫</p>
+            </div>
+          </section>
+
+          <section>
+            <p>Most components are zero.</p>
+            <img class="r-stretch" src="assets/superposition.png">
+          </section>
+
+          <section>
+            <p>We only store the universes with non-zero amplitudes in a <em>sparse vector</em>. (For us, that's just a list.)</p>
+            <p>
+              \[ |\psi\rangle = \left[\frac{1}{\sqrt{2}} \textrm{Universe}_1,\;\frac{1}{\sqrt{2}} \textrm{Universe}_2\right] \]
+            </p>
+          </section>
+
+          <section>
+            <h2>Quantum operations</h2>
+          </section>
+
+          <section>
+            <p>Traditionally, operations are matrices.</p>
+            <div class="fragment">
+              <p>For us, an operation is...</p>
+              <pre class="scala"><code data-trim>
+                trait Unitary {
+                  def apply(universe: Universe): NonEmptyList[Universe]
+                  def adjoint: Unitary
+                }
+              </code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h3>$X$</h3>
+            <p>\[ |0\rangle \to [|1\rangle] \quad\quad |1\rangle \to [|0\rangle] \]</p>
+            <div class="fragment">
+              <p>$H$</p>
+              <p>\[ |0\rangle \to \left[\frac{1}{\sqrt{2}} |0\rangle,\;\frac{1}{\sqrt{2}} |1\rangle\right] \]</p>
+              <p>\[ |1\rangle \to \left[\frac{1}{\sqrt{2}} |0\rangle,\;-\frac{1}{\sqrt{2}} |1\rangle\right] \]</p>
+            </div>
+
+            <aside class="notes">
+              Metadata is preserved.
+            </aside>
+          </section>
+
+          <section>
+            <table>
+              <tr>
+                <td>Start</td>
+                <td style="text-align: center">
+                  <span class="box" style="background-color: rgb(0, 136, 136)">$|0\rangle$</span>
+                  <span class="box" style="background-color: rgb(156, 0, 0)">$|1\rangle$</span>
+                </td>
+              </tr>
+              <tr class="fragment">
+                <td>Map</td>
+                <td style="text-align: center">
+                  <span class="box" style="background-color: rgb(0, 136, 136)">$H |0\rangle$</span>
+                  <span class="box" style="background-color: rgb(156, 0, 0)">$H |1\rangle$</span>
+                </td>
+              </tr>
+              <tr class="fragment">
+                <td>Expand</td>
+                <td style="text-align: center">
+                  <span class="box" style="background-color: rgb(0, 136, 136)">$|0\rangle$</span>
+                  <span class="box" style="background-color: rgb(0, 136, 136)">$|1\rangle$</span>
+                  <span class="box" style="background-color: rgb(156, 0, 0)">$|0\rangle$</span>
+                  <span class="box" style="background-color: rgb(156, 0, 0)">$-|1\rangle$</span></td>
+              </tr>
+              <tr class="fragment">
+                <td>Simplify</td>
+                <td style="text-align: center">$|0\rangle$</td>
+              </tr>
+            </table>
+          </section>
+
+          <section>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser.png">
+            <p>Lasers aren't just an $X$ gate.</p>
+
+            <aside class="notes">
+              We need complicated gates and we want to guarantee that they're unitary.
+              Make it impossible to write non-unitary gates.
+            </aside>
+          </section>
+
+          <section>
+            <img class="r-stretch" style="image-rendering: crisp-edges" src="assets/laser.png">
+            <pre class="scala"><code data-trim data-noescape>
+              // Targets is a QExpr[List[Qubit]].
+              val targets = beamHits(multiverse, entity)
+
+              <span class="fragment">val unitary =
+                gate            // The laser's gate.</span>
+              <span class="fragment">  .multi          // Accept List[Qubit].</span>
+              <span class="fragment">  .onQExpr        // Accept a QExpr.</span>
+              <span class="fragment">  .apply(targets) // Give the QExpr[List[Qubit]] to the gate.</span>
+
+              <span class="fragment">// Map over the universes in the multiverse and simplify.
+              multiverse.applyUnitary(unitary)</span>
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Describing quantum behavior</h1>
+          </section>
+
+          <section>
+            <p>Our puzzles need complex quantum states and operations.</p>
+          </section>
+
+          <section>
+            <p>We want to make levels without writing code.</p>
+            <img class="r-stretch" src="assets/tiled.png">
+          </section>
+
+          <section>
+            <h2>A quantum scripting language</h2>
+            <ul>
+              <li class="fragment">English-like syntax</li>
+              <li class="fragment">High-level concepts expressed concisely</li>
+              <li class="fragment">Specialized for our game scripting needs</li>
+            </ul>
+          </section>
+
+          <section>
+            <pre class="text"><code data-trim>
+              Apply H on qubit 16.
+            </code></pre>
+          </section>
+
+          <section>
+            <pre class="text"><code data-trim>
+              and [activeCell (9, 2), activeCell (10, 2)]
+            </code></pre>
+          </section>
+
+          <section>
+            <pre class="text"><code data-trim>
+              Apply Translate
+              on (qucell 16, vec2 (-1, 0))
+              if value (qubit 16).
+            </code></pre>
+          </section>
+
+          <section>
+            <pre class="text"><code data-trim>
+              Apply QFT on primaryAt (cell (9, 5)).
+              
+              Apply Phase on 0.0625
+              repeat int (activated [cell (9, 5)])
+              repeat int (activated [cell (10, 5)]).
+              
+              Apply QFT adjoint on primaryAt (cell (9, 5)).
+            </code></pre>
+          </section>
+
+          <section>
+            <p>Every expression is "quantum."</p>
+            <pre class="fragment text"><code data-trim>activeCell (9, 2)</code></pre>
+            <pre class="fragment text"><code data-trim data-noescape>activeCell (<span class="fragment strike">universe,</span> (9, 2))</code></pre>
+            <div class="fragment">
+              <p>Even constants.</p>
+              <pre class="text"><code data-trim>vec2 (-1, 0)</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <img src="assets/tiled-dsl.png">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Conclusion</h1>
+          </section>
+
+          <section>
+            <h2>Future work</h2>
+            <ul>
+              <li class="fragment">More puzzles with more advanced circuits</li>
+              <li class="fragment">Improve graphics and user interface</li>
+              <li class="fragment">Write a story?</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>Play <em>Superposition</em></p>
+            <p><a href="https://github.com/samarsha/superposition">github.com/samarsha/superposition</a></p>
+            <div class="fragment">
+              <p>...or help make it!</p>
+              <p><a href="mailto:sarah@sarahmarshall.name">sarah@sarahmarshall.name</a></p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        plugins: [RevealHighlight, RevealMath, RevealNotes],
+        hash: true
+      });
+    </script>
+  </body>
+</html>

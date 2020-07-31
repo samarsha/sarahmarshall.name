@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Great+Vibes&family=Staatliches&display=swap");
+
+code {
+  font-family: "Fira Code", monospace !important;
+}
+
+figcaption {
+  font-size: medium;
+  margin-top: -35px;
+}
+
+hr {
+  border: 2px #888 solid;
+}
+
+.title-info {
+  color: #777;
+  list-style-type: none;
+  margin: 0 !important;
+}
+
+.title-info li {
+  display: inline;
+  margin: 0 100px;
+}
+
+table th,
+table td {
+  border: none !important;
+  padding-bottom: 25px !important;
+  padding-top: 25px !important;
+}
+
+.box {
+  border-radius: 5px; 
+  padding: 5px;
+}
+
+.fragment.strike.visible {
+  opacity: 0.25 !important;
+}
